@@ -5,9 +5,12 @@ import MainContainer from "./MainContainer";
 import SignUp from "./Components/SignUp";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { MDBContainer } from "mdbreact";
+import QuestionForm from "./Components/QuestionForm";
+import AnswerForm from "./Components/AnswerForm";
 // import Button from "react-bootstrap/Button";
 
-const url = "http://localhost:3000/questions";
+const url = "http://localhost:3000/questions/";
+
 class App extends Component {
   state = {
     questions: [],
@@ -22,6 +25,40 @@ class App extends Component {
         })
       );
   }
+
+  addQuestion = (e) => {
+    e.preventDefault()
+    
+    let title = e.target[0].value
+    let body = e.target[1].value
+    let tag = e.target[2].value
+
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        question: {
+          title: title,
+          body: body,
+          tag: tag,
+          user_id: 1 //needs to be current user
+        }
+      })
+    }
+
+    fetch(url, configObj)
+    .then(res => res.json())
+    .then(question =>
+      this.setState({
+        questions: [...this.state.questions, question]
+      })
+      )
+    e.target.reset()
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -42,6 +79,20 @@ class App extends Component {
                   )}
                 />
               </MDBContainer>
+              <Switch>
+                  <Route path="/addquestion" componet={QuestionForm} 
+                    render={() => ( 
+                    <QuestionForm addQuestion={this.addQuestion}/>
+                    )}
+                  />
+              </Switch>
+              <Switch>
+                  <Route path="/addanswer" componet={AnswerForm} 
+                    render={() => ( 
+                    <AnswerForm addAnswer={this.addAnswer}/>
+                    )}
+                  />
+              </Switch>
             </Switch>
           </div>
         </MDBContainer>
