@@ -28,7 +28,9 @@ class App extends Component {
         <MDBContainer fluid>
           <div className="App">
             <Header />
-            <MDBContainer size="sm">{/* <NavBar /> */}</MDBContainer>
+            <MDBContainer size="sm">
+              <NavBar />
+            </MDBContainer>
             <Switch>
               <Route exact path="/signup" component={SignUp} />
               <MDBContainer size="lg">
