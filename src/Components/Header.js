@@ -1,9 +1,15 @@
-import React from "react";
+// import React from "react";
 // import SignUp from "./SignUp";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
+
 const Header = (props) => {
+  const history = useHistory();
+  const handleOnClick = useCallback(() => history.push("/signup"), [history]);
+
   return (
     <div>
       <>
@@ -20,7 +26,9 @@ const Header = (props) => {
             CodeOverFlow
           </Navbar.Brand>
           <Button variant="primary">Log in</Button>
-          <Button variant="primary">Signup</Button>
+          <Button variant="primary" onClick={handleOnClick}>
+            Signup
+          </Button>
         </Navbar>
       </>
     </div>

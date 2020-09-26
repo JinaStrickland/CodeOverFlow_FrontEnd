@@ -36,7 +36,9 @@ class SignUp extends Component {
   render() {
     return (
       <div>
+        <br />
         <h3>Signup</h3>
+        <br />
 
         <Form onSubmit={(e) => this.signUp(e)}>
           <Form.Row>

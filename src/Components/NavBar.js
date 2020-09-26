@@ -7,9 +7,9 @@ import Nav from "react-bootstrap/Nav";
 const NavBar = (props) => {
   return (
     <div>
-      <Search />
-
-      <Card border="light" style={{ width: "20rem", height: "1100rem"}}>
+      <br />
+      <br />
+      <Card border="light" style={{ width: "15rem", height: "100rem" }}>
         <Card.Header>
           <Nav variant="tabs" defaultActiveKey="#first">
             <Nav.Item>
@@ -21,11 +21,9 @@ const NavBar = (props) => {
           </Nav>
         </Card.Header>
         <Card.Body>
-          <Card.Title>Special title treatment</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
+          <Card.Title>Some title...</Card.Title>
+          <Search />
+          <Card.Text>Something.......</Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
