@@ -9,33 +9,18 @@ class SingleQuestion extends React.Component {
   //   user: "",
   // };
 
-  // componentDidMount() {
-  //   fetch(usersUrl)
-  //     .then((resp) => resp.json())
-  //     .then((users) =>
-  //       users.map((foundUser) => {
-  //         if (foundUser.id === this.props.question.user_id) {
-  //           this.setState({
-  //             user: foundUser,
-  //           });
-  //         }
-  //       })
-  //     );
-  // }
-
   render() {
     let question = this.props.question;
     // console.log(question);
     let answers_count = question.answers.length;
-    let answers = question.answers.map((answer) => answer.body);
+    let answers = question.answers.map((answer) => <li>{answer.body}</li>);
+    // console.log("Hello");
     return (
-      <div>
+      <div id="single-question">
         {/* <p>Username: {this.state.user.username}</p> */}
-
-        {/* <img src={`${this.state.user.image}`}></img> */}
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link href="/addquestion">edit</Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         <h6>
           {" "}
           <strong>Title: {question.title}</strong>
@@ -45,10 +30,8 @@ class SingleQuestion extends React.Component {
           <strong>Tag: </strong>
           {question.tag}
         </p>
-          <Button variant="danger">Delete</Button>
-        <p>
-          ({answers_count}) Answers: {answers.join(" - ")}
-        </p>
+        <Button variant="danger">Delete</Button>
+        {answers_count > 0 ? <p>Answers: {answers}</p> : null}
         <br />
       </div>
     );

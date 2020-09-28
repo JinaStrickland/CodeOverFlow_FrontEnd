@@ -6,15 +6,18 @@ import Card from "react-bootstrap/Card";
 // import Button from "react-bootstrap/Button";
 
 class MainContainer extends React.Component {
-
   // state = {};
   render() {
     return (
       <div id="main-container">
-        <Card border="secondary" >
+        <Card border="secondary">
           <Card.Body>
             {this.props.questions.map((question) => (
-              <Question question={question} key={question.id} />
+              <Question
+                question={question}
+                key={question.id}
+                getQuestion={this.props.getQuestion}
+              />
             ))}
             <Answer />
           </Card.Body>

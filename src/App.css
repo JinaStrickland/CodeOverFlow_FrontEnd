@@ -1,16 +1,20 @@
 #nav-bar {
   float: left;
-  height: "150rem"
-
+  height: "150rem";
 }
 
-#main-container {
+#main-container,
+#single-question {
   float: right;
   /* margin: auto; */
   margin-top: 46px;
   position: relative;
   width: "70rem";
   /* width: 100%; */
+}
+
+#single-question {
+  margin-left: 15px;
 }
 
 #signup-card {
@@ -20,3 +24,7 @@
   margin-top: 46px;
 }
 
+#user-image {
+  width: 50px;
+  height: auto;
+}

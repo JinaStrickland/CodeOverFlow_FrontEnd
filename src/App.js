@@ -10,12 +10,14 @@ import QuestionForm from "./Components/QuestionForm";
 import AnswerForm from "./Components/AnswerForm";
 import "./App.css";
 import { Card } from "react-bootstrap";
+import SingleQuestion from "./Components/SingleQuestion";
 
 const url = "http://localhost:3000/questions/";
 
 class App extends Component {
   state = {
     questions: [],
+    question: {},
   };
 
   componentDidMount() {
@@ -31,9 +33,9 @@ class App extends Component {
       .then((resp) => resp.json())
       .then((allQuestions) =>
         this.setState({
-          questions: allQuestions.map(question => {
-            return {...question, clicked: false}
-          })
+          questions: allQuestions.map((question) => {
+            return { ...question, clicked: false };
+          }),
         })
       );
   }
@@ -72,6 +74,14 @@ class App extends Component {
     e.target.reset();
   };
 
+  getQuestion = (foundQuestion) => {
+    // console.log(question);
+    // return question;
+    this.setState({
+      question: foundQuestion,
+    });
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -91,7 +101,18 @@ class App extends Component {
                   exact
                   path="/homepage"
                   render={() => (
-                    <MainContainer questions={this.state.questions} />
+                    <MainContainer
+                      questions={this.state.questions}
+                      getQuestion={this.getQuestion}
+                    />
+                  )}
+                />
+
+                <Route
+                  exact
+                  path="/a_question"
+                  render={() => (
+                    <SingleQuestion question={this.state.question} />
                   )}
                 />
                 <Switch>
