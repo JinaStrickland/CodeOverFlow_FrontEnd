@@ -48,7 +48,9 @@ class Question extends React.Component {
           </h6>
         </div>
         <p>{question.body}</p>
-        <p>{question.tag}</p>
+        <Button variant="info" size="sm">
+          {question.tag}
+        </Button>
 
         <p>
           Answers:
