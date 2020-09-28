@@ -9,7 +9,7 @@ const NavBar = (props) => {
     <div>
       <br />
       <br />
-      <Card border="light" style={{ width: "15rem", height: "100rem" }}>
+      <Card border="secondary" style={{ width: "15rem", height: 0 }}>
         <Card.Header>
           <Nav variant="tabs" defaultActiveKey="#first">
             <Nav.Item>

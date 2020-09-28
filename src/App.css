@@ -1,0 +1,22 @@
+#nav-bar {
+  float: left;
+  height: "150rem"
+
+}
+
+#main-container {
+  float: right;
+  /* margin: auto; */
+  margin-top: 46px;
+  position: relative;
+  width: "70rem";
+  /* width: 100%; */
+}
+
+#signup-card {
+  margin-top: 46px;
+}
+#login-card {
+  margin-top: 46px;
+}
+

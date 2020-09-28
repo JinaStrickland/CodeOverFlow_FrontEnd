@@ -9,8 +9,8 @@ class MainContainer extends React.Component {
   // state = {};
   render() {
     return (
-      <div>
-        <Card border="light" style={{ width: "100rem", height: "100rem" }}>
+      <div id="main-container">
+        <Card border="secondary" >
           <Card.Body>
             {this.props.questions.map((question) => (
               <Question question={question} key={question.id} />

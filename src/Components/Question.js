@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
 
 let usersUrl = "http://localhost:3000/users/";
 
@@ -28,7 +30,11 @@ class Question extends React.Component {
     return (
       <div>
         <p>Username: {this.state.user.username}</p>
+
         <img src={`${this.state.user.image}`}></img>
+        <Nav.Item>
+          <Nav.Link href="/addquestion">edit</Nav.Link>
+        </Nav.Item>
         <h6>
           {" "}
           <strong>Title: {question.title}</strong>
@@ -38,6 +44,7 @@ class Question extends React.Component {
           <strong>Tag: </strong>
           {question.tag}
         </p>
+          <Button variant="danger">Delete</Button>
         <p>
           ({answers_count}) Answers: {answers.join(" - ")}
         </p>

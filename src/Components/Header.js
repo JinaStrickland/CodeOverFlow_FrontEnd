@@ -9,10 +9,18 @@ import { useHistory } from "react-router-dom";
 const Header = (props) => {
   const history = useHistory();
   const handleOnClick = useCallback(() => history.push("/signup"), [history]);
+  const logInOnClick = useCallback(() => history.push("/login"), [history]);
+  const homepageOnClick = useCallback(() => history.push("/homepage"), [
+    history,
+  ]);
+
+  const logOut = () => {
+    localStorage.clear();
+  };
 
   return (
     <div>
-      <>
+      {/* <> */}
         <br />
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="#home">
@@ -25,12 +33,22 @@ const Header = (props) => {
             />{" "}
             CodeOverFlow
           </Navbar.Brand>
-          <Button variant="primary">Log in</Button>
-          <Button variant="primary" onClick={handleOnClick}>
-            Signup
-          </Button>
+          <>
+            <Button variant="primary" onClick={logInOnClick}>
+              Log in
+            </Button>{" "}
+            <Button variant="primary" onClick={handleOnClick}>
+              Signup
+            </Button>{" "}
+            <Button variant="primary" onClick={homepageOnClick}>
+              Home
+            </Button>{" "}
+            <Button variant="primary" onClick={logOut}>
+              Log Out
+            </Button>
+          </>
         </Navbar>
-      </>
+      {/* </> */}
     </div>
   );
 };
