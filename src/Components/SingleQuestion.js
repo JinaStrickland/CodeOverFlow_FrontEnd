@@ -30,7 +30,7 @@ class SingleQuestion extends React.Component {
           <strong>Tag: </strong>
           {question.tag}
         </p>
-        <Button variant="danger">Delete</Button>
+        <Button variant="danger" size="sm" >Delete</Button>
         {answers_count > 0 ? <p>Answers: {answers}</p> : null}
         <br />
       </div>

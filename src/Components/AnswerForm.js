@@ -6,10 +6,10 @@ const AnswerForm = (props) => {
 
     return (
          <div>
-             <Form onSubmit={(e) => props.addQuestion(e)}>
+             <Form onSubmit={(e) => props.addAnswer(e)}>
                 <Form.Group controlId="formGroupTitle">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" />
+                    <Form.Control type="text" placeholder="Answer" />
                 </Form.Group>
                 <Form.Group controlId="formGroupBody">
                     <Form.Label>Question</Form.Label>
@@ -28,3 +28,7 @@ const AnswerForm = (props) => {
 }
  
 export default AnswerForm;
+
+// t.text "body"
+// t.integer "user_id"
+// t.integer "question_id"

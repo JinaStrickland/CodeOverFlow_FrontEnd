@@ -33,7 +33,7 @@ const Header = (props) => {
             />{" "}
             CodeOverFlow
           </Navbar.Brand>
-          <>
+          <div>
             <Button variant="primary" size="sm" onClick={logInOnClick}>
               Log in
             </Button>{" "}
@@ -46,7 +46,7 @@ const Header = (props) => {
             <Button variant="primary" size="sm" onClick={logOut}>
               Log Out
             </Button>
-          </>
+            </div>
         </Navbar>
       {/* </> */}
     </div>
