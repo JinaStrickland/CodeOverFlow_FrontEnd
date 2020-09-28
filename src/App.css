@@ -9,7 +9,8 @@
   /* margin: auto; */
   margin-top: 46px;
   position: relative;
-  width: "70rem";
+  /* width: "70rem"; */
+  width: auto;
   /* width: 100%; */
 }
 
@@ -22,9 +23,21 @@
 }
 #login-card {
   margin-top: 46px;
+  /* margin-left: 10px; */
 }
 
 #user-image {
-  width: 50px;
+  width: 40px;
   height: auto;
+  border-radius: 30%;
+}
+
+.add-question {
+  float: right;
+}
+
+#question-form,
+#answer-form {
+  margin-top: 40px;
+  margin-left: 20px;
 }

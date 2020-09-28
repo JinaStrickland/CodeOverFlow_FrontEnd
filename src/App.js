@@ -9,7 +9,7 @@ import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
 import AnswerForm from "./Components/AnswerForm";
 import "./App.css";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import SingleQuestion from "./Components/SingleQuestion";
 
 const url = "http://localhost:3000/questions/";
@@ -75,11 +75,13 @@ class App extends Component {
   };
 
   getQuestion = (foundQuestion) => {
-    // console.log(question);
-    // return question;
     this.setState({
       question: foundQuestion,
     });
+  };
+
+  addAnswer = (value) => {
+    console.log(value);
   };
 
   render() {
@@ -117,18 +119,22 @@ class App extends Component {
                 />
                 <Switch>
                   <Route
-                    path="/addquestion"
-                    component={QuestionForm}
-                    render={() => (
-                      <QuestionForm addQuestion={this.addQuestion} />
+                    path="/add_question"
+                    render={(routerProps) => (
+                      <QuestionForm
+                        routerProps
+                        addQuestion={this.addQuestion}
+                      />
                     )}
                   />
                 </Switch>
+
                 <Switch>
                   <Route
-                    path="/addanswer"
-                    component={AnswerForm}
-                    render={() => <AnswerForm addAnswer={this.addAnswer} />}
+                    path="/add_answer"
+                    render={(routerProps) => (
+                      <AnswerForm routerProps addAnswer={this.addAnswer} />
+                    )}
                   />
                 </Switch>
               </Switch>

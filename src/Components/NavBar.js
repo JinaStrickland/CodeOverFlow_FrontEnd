@@ -1,8 +1,7 @@
 import React from "react";
 import Search from "./Search";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Nav from "react-bootstrap/Nav";
+import { Button, Card, Nav } from "react-bootstrap/";
+import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   return (
@@ -13,18 +12,24 @@ const NavBar = (props) => {
         <Card.Header>
           <Nav variant="tabs" defaultActiveKey="#first">
             <Nav.Item>
-              <Nav.Link href="#first">Active</Nav.Link>
+              <Nav.Link href="#first">Profile</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="#link">Saved Links</Nav.Link>
             </Nav.Item>
           </Nav>
         </Card.Header>
+        <br />
+        <br />
         <Card.Body>
-          <Card.Title>Some title...</Card.Title>
           <Search />
-          <Card.Text>Something.......</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <br />
+          <Link to="/add_question">
+            {" "}
+            <Button id="add-question" variant="primary" size="sm">
+              Ask question
+            </Button>
+          </Link>
         </Card.Body>
       </Card>
     </div>

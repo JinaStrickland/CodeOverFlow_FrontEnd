@@ -42,12 +42,11 @@ class LogIn extends Component {
           <h3>Login</h3>
           <br />
           <Form onSubmit={(e) => this.logIn(e)}>
-            <Form.Row>
               <Form.Group
                 as={Col}
                 controlId="formGridUsername formBasicUsername"
               >
-                <Col xs="auto">
+                <Col xs="10">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
                     type="text"
@@ -57,14 +56,12 @@ class LogIn extends Component {
                   />
                 </Col>
               </Form.Group>
-            </Form.Row>
 
-            <Form.Row>
               <Form.Group
                 as={Col}
                 controlId="formGridPassword formBasicPassword"
               >
-                <Col xs="auto">
+                <Col xs="10">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
@@ -74,17 +71,15 @@ class LogIn extends Component {
                   />
                 </Col>
               </Form.Group>
-            </Form.Row>
 
-            <Form.Row>
               <Col xs="8">
                 <br />
                 <Button variant="primary" type="submit">
                   Submit
                 </Button>
               </Col>
-            </Form.Row>
           </Form>
+          <br />
         </Card>
       </div>
     );

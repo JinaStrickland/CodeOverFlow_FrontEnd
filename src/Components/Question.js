@@ -1,6 +1,5 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
+import { Button, Card, Nav } from "react-bootstrap/";
 import SingleQuestion from "./SingleQuestion";
 import { Link } from "react-router-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -33,14 +32,13 @@ class Question extends React.Component {
 
   render() {
     let question = this.props.question;
-    // console.log("hello");
-    let answers_count = question.answers.length;
-    let answers = question.answers.map((answer) => answer.body);
+    // let answers_count = question.answers.length;
     return (
       <div>
-        <p>Username: {this.state.user.username}</p>
-
+        <Card></Card>
+        <br />
         <img id="user-image" src={`${this.state.user.image}`}></img>
+        <p>{this.state.user.username}</p>
         <div onClick={() => this.props.getQuestion(question)}>
           <h6>
             {" "}
@@ -52,11 +50,14 @@ class Question extends React.Component {
           {question.tag}
         </Button>
 
-        <p>
-          Answers:
-          {answers_count}
-        </p>
+        {question.answers.any ? (
+          <p>
+            Answers:
+            {question.answers.length}
+          </p>
+        ) : null}
 
+        <br />
         <br />
       </div>
     );

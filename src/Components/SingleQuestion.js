@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
+import { Button, Nav } from "react-bootstrap/";
+import { Link } from "react-router-dom";
 
 let usersUrl = "http://localhost:3000/users/";
 
@@ -21,6 +21,11 @@ class SingleQuestion extends React.Component {
         {/* <Nav.Item>
           <Nav.Link href="/addquestion">edit</Nav.Link>
         </Nav.Item> */}
+        <Button variant="danger" size="sm">
+          Delete
+        </Button>
+        <br />
+        <br />
         <h6>
           {" "}
           <strong>Title: {question.title}</strong>
@@ -30,8 +35,16 @@ class SingleQuestion extends React.Component {
           <strong>Tag: </strong>
           {question.tag}
         </p>
-        <Button variant="danger" size="sm" >Delete</Button>
+
         {answers_count > 0 ? <p>Answers: {answers}</p> : null}
+        <Link to="/add_answer">
+          {" "}
+          <Button id="add-answer" variant="primary" size="sm">
+            Add answer
+          </Button>
+        </Link>
+
+        <br />
         <br />
       </div>
     );
