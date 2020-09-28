@@ -31,7 +31,9 @@ class App extends Component {
       .then((resp) => resp.json())
       .then((allQuestions) =>
         this.setState({
-          questions: allQuestions,
+          questions: allQuestions.map(question => {
+            return {...question, clicked: false}
+          })
         })
       );
   }
@@ -95,7 +97,7 @@ class App extends Component {
                 <Switch>
                   <Route
                     path="/addquestion"
-                    componet={QuestionForm}
+                    component={QuestionForm}
                     render={() => (
                       <QuestionForm addQuestion={this.addQuestion} />
                     )}
@@ -104,7 +106,7 @@ class App extends Component {
                 <Switch>
                   <Route
                     path="/addanswer"
-                    componet={AnswerForm}
+                    component={AnswerForm}
                     render={() => <AnswerForm addAnswer={this.addAnswer} />}
                   />
                 </Switch>
