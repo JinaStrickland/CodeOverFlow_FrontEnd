@@ -27,12 +27,12 @@ class App extends Component {
   componentDidMount() {
     fetch(
       url
-      //   , {
-      //   method: "GET",
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.token}`,
-      //   },
-      // }
+        , {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      }
     )
       .then((resp) => resp.json())
       .then((allQuestions) =>
@@ -99,7 +99,13 @@ class App extends Component {
     });
   };
 
+  
   render() {
+
+    // let questions={this.state.questions.filter((q) =>
+    //   q.tag.toLowerCase().includes(this.state.searchTerm)
+    // )}
+
     return (
       <BrowserRouter>
         <Route exact path="/" component={About} />
@@ -129,7 +135,6 @@ class App extends Component {
                     />
                   )}
                 />
-
                 <Route
                   exact
                   path="/a_question"

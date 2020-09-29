@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap/";
+import { Button, Nav } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 let usersUrl = "http://localhost:3000/users/";
@@ -20,12 +20,9 @@ class SingleQuestion extends React.Component {
     return (
       <div id="single-question">
         {/* <p>Username: {this.state.user.username}</p> */}
-        {/* <Nav.Item>
+        <Nav.Item>
           <Nav.Link href="/addquestion">edit</Nav.Link>
-        </Nav.Item> */}
-        <Button variant="danger" size="sm">
-          Delete
-        </Button>
+        </Nav.Item>
         <br />
         <br />
         <h6>
@@ -45,7 +42,9 @@ class SingleQuestion extends React.Component {
             Add answer
           </Button>
         </Link>
-
+        <Button variant="danger" size="sm">
+          Delete
+        </Button>
         <br />
         <br />
       </div>
