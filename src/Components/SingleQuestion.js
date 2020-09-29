@@ -11,10 +11,8 @@ class SingleQuestion extends React.Component {
 
   render() {
     let question = this.props.question;
-    // console.log(question);
     let answers_count = question.answers.length;
     let answers = question.answers.map((answer) => <li>{answer.body}</li>);
-    // console.log("Hello");
     return (
       <div id="single-question">
         {/* <p>Username: {this.state.user.username}</p> */}

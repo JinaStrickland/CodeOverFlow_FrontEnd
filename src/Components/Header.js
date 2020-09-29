@@ -1,7 +1,6 @@
 // import React from "react";
 // import SignUp from "./SignUp";
-import Button from "react-bootstrap/Button";
-import Navbar from "react-bootstrap/Navbar";
+import { Button, Navbar } from "react-bootstrap/";
 
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
@@ -46,7 +45,6 @@ const Header = (props) => {
           <Button variant="primary" size="sm" onClick={logOut}>
             Log Out
           </Button>{" "}
-         
         </div>
       </Navbar>
       {/* </> */}

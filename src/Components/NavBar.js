@@ -22,7 +22,7 @@ const NavBar = (props) => {
         <br />
         <br />
         <Card.Body>
-          <Search />
+          <Search handleSearch={props.handleSearch} />
           <br />
           <Link to="/add_question">
             {" "}

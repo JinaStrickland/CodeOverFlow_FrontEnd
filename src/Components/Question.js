@@ -1,8 +1,6 @@
 import React from "react";
 import { Button, Card, Nav } from "react-bootstrap/";
-import SingleQuestion from "./SingleQuestion";
 import { Link } from "react-router-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 let usersUrl = "http://localhost:3000/users/";
 
@@ -37,8 +35,8 @@ class Question extends React.Component {
       <div>
         <Card></Card>
         <br />
-        <img id="user-image" src={`${this.state.user.image}`}></img>
-        <p>{this.state.user.username}</p>
+        <img id="user-image" src={`${this.state.user.image}`}></img>{" "}
+        <p id="user-name">{this.state.user.username}</p> <br /> <br />
         <div onClick={() => this.props.getQuestion(question)}>
           <h6>
             {" "}
@@ -49,14 +47,12 @@ class Question extends React.Component {
         <Button variant="info" size="sm">
           {question.tag}
         </Button>
-
         {question.answers.any ? (
           <p>
             Answers:
             {question.answers.length}
           </p>
         ) : null}
-
         <br />
         <br />
       </div>

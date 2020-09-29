@@ -30,6 +30,11 @@
   width: 40px;
   height: auto;
   border-radius: 30%;
+  float: right;
+}
+
+#user-name {
+  float: right;
 }
 
 .add-question {

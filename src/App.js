@@ -18,6 +18,7 @@ class App extends Component {
   state = {
     questions: [],
     question: {},
+    searchTerm: "",
   };
 
   componentDidMount() {
@@ -80,8 +81,19 @@ class App extends Component {
     });
   };
 
-  addAnswer = (value) => {
-    console.log(value);
+  addAnswer = (e) => {
+    e.preventDefault();
+    // debugger;
+
+    let body = e.target[0].value;
+
+    // console.log(e.target);
+  };
+
+  handleSearch = (e) => {
+    this.setState({
+      searchTerm: e.target.value,
+    });
   };
 
   render() {
@@ -92,7 +104,7 @@ class App extends Component {
             <Header />
             <div id="nav-bar">
               <MDBContainer size="sm" id="nav-bar">
-                <NavBar />
+                <NavBar handleSearch={this.handleSearch} />
               </MDBContainer>
             </div>
             <Card>
@@ -104,8 +116,12 @@ class App extends Component {
                   path="/homepage"
                   render={() => (
                     <MainContainer
-                      questions={this.state.questions}
+                      // questions={this.state.questions}
+                      questions={this.state.questions.filter((q) =>
+                        q.tag.toLowerCase().includes(this.state.searchTerm)
+                      )}
                       getQuestion={this.getQuestion}
+                      handleSearch={this.handleSearch}
                     />
                   )}
                 />
@@ -117,26 +133,22 @@ class App extends Component {
                     <SingleQuestion question={this.state.question} />
                   )}
                 />
-                <Switch>
-                  <Route
-                    path="/add_question"
-                    render={(routerProps) => (
-                      <QuestionForm
-                        routerProps
-                        addQuestion={this.addQuestion}
-                      />
-                    )}
-                  />
-                </Switch>
+                <Route
+                  path="/add_question"
+                  render={(routerProps) => (
+                    <QuestionForm routerProps addQuestion={this.addQuestion} />
+                  )}
+                />
 
-                <Switch>
-                  <Route
-                    path="/add_answer"
-                    render={(routerProps) => (
-                      <AnswerForm routerProps addAnswer={this.addAnswer} />
-                    )}
-                  />
-                </Switch>
+                <Route
+                  path="/add_answer"
+                  render={() => (
+                    <AnswerForm
+                      addAnswer={this.addAnswer}
+                      // question={this.state.question}
+                    />
+                  )}
+                />
               </Switch>
             </Card>
             <div></div>

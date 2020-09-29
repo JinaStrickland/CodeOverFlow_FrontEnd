@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
+import { Button, Card, Col, Form } from "react-bootstrap/";
 
 class LogIn extends Component {
   handleChange = (e) => {
@@ -42,42 +39,36 @@ class LogIn extends Component {
           <h3>Login</h3>
           <br />
           <Form onSubmit={(e) => this.logIn(e)}>
-              <Form.Group
-                as={Col}
-                controlId="formGridUsername formBasicUsername"
-              >
-                <Col xs="10">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="username"
-                    placeholder="Enter username"
-                    onChange={(e) => this.handleChange(e)}
-                  />
-                </Col>
-              </Form.Group>
-
-              <Form.Group
-                as={Col}
-                controlId="formGridPassword formBasicPassword"
-              >
-                <Col xs="10">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={(e) => this.handleChange(e)}
-                  />
-                </Col>
-              </Form.Group>
-
-              <Col xs="8">
-                <br />
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
+            <Form.Group as={Col} controlId="formGridUsername formBasicUsername">
+              <Col xs="10">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="Enter username"
+                  onChange={(e) => this.handleChange(e)}
+                />
               </Col>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridPassword formBasicPassword">
+              <Col xs="10">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={(e) => this.handleChange(e)}
+                />
+              </Col>
+            </Form.Group>
+
+            <Col xs="8">
+              <br />
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Col>
           </Form>
           <br />
         </Card>

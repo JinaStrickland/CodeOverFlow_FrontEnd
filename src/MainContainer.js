@@ -3,6 +3,7 @@ import Answer from "./Components/Answer";
 import Question from "./Components/Question";
 // import Nav from "react-bootstrap/Nav";
 import Card from "react-bootstrap/Card";
+import AnswerForm from "./Components/AnswerForm";
 // import Button from "react-bootstrap/Button";
 
 class MainContainer extends React.Component {
@@ -20,6 +21,7 @@ class MainContainer extends React.Component {
               />
             ))}
             <Answer />
+            {/* <AnswerForm getQuestion={this.props.getQuestion} /> */}
           </Card.Body>
         </Card>
       </div>
