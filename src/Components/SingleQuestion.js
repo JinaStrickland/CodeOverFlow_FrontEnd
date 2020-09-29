@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Nav } from "react-bootstrap/";
+import { Button } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 let usersUrl = "http://localhost:3000/users/";
@@ -12,7 +12,11 @@ class SingleQuestion extends React.Component {
   render() {
     let question = this.props.question;
     let answers_count = question.answers.length;
-    let answers = question.answers.map((answer) => <li>{answer.body}</li>);
+    let answers = question.answers.map((answer) => (
+      <Link to="/answer">
+        <li>{answer.body}</li>
+      </Link>
+    ));
     return (
       <div id="single-question">
         {/* <p>Username: {this.state.user.username}</p> */}

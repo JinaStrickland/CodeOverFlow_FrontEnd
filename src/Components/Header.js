@@ -4,6 +4,7 @@ import { Button, Navbar } from "react-bootstrap/";
 
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
+// import '../images/codeOverFlow_logo.jpg';
 
 const Header = (props) => {
   const history = useHistory();
@@ -25,14 +26,14 @@ const Header = (props) => {
         <Navbar.Brand href="#home">
           <img
             alt=""
-            src="https://cdn2.vectorstock.com/i/1000x1000/99/71/coding-cartoon-icon-vector-7349971.jpg"
-            width="30"
-            height="30"
+            src={require(`../images/codeOverFlow_logo.jpg`)}
+            width="40"
+            height="40"
             className="d-inline-block align-top"
           />{" "}
           CodeOverFlow
         </Navbar.Brand>
-        <div>
+        <div id="all-header-btns">
           <Button variant="primary" size="sm" onClick={logInOnClick}>
             Log in
           </Button>{" "}

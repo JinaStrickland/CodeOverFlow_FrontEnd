@@ -1,10 +1,8 @@
 import React from "react";
 import Answer from "./Components/Answer";
 import Question from "./Components/Question";
-// import Nav from "react-bootstrap/Nav";
 import Card from "react-bootstrap/Card";
-import AnswerForm from "./Components/AnswerForm";
-// import Button from "react-bootstrap/Button";
+// import AnswerForm from "./Components/AnswerForm";
 
 class MainContainer extends React.Component {
   // state = {};
@@ -12,7 +10,9 @@ class MainContainer extends React.Component {
     return (
       <div id="main-container">
         <Card border="secondary">
-          <Card.Body>
+          <Card.Header>
+            <h4>All questions ({this.props.questions.length}) </h4>
+
             {this.props.questions.map((question) => (
               <Question
                 question={question}
@@ -20,9 +20,9 @@ class MainContainer extends React.Component {
                 getQuestion={this.props.getQuestion}
               />
             ))}
-            <Answer />
+            {/* <Answer /> */}
             {/* <AnswerForm getQuestion={this.props.getQuestion} /> */}
-          </Card.Body>
+          </Card.Header>
         </Card>
       </div>
     );

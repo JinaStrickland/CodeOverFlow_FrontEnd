@@ -1,9 +1,21 @@
+
+#root {
+  background-image: url(images/codeOverFlow_background.jpeg);
+}
 #nav-bar {
   float: left;
   height: "150rem";
 }
 
-#main-container,
+#main-container {
+  float: right;
+  /* margin: auto; */
+  margin-top: 46px;
+  position: relative;
+  /* width: "70rem"; */
+  width: auto;
+}
+
 #single-question {
   float: right;
   /* margin: auto; */
@@ -11,7 +23,6 @@
   position: relative;
   /* width: "70rem"; */
   width: auto;
-  /* width: 100%; */
 }
 
 #single-question {
@@ -34,6 +45,14 @@
 }
 
 #user-name {
+  float: right;
+}
+
+#q-asked-time {
+  float: right;
+}
+
+#all-header-btns {
   float: right;
 }
 

@@ -8,14 +8,14 @@ const NavBar = (props) => {
     <div>
       <br />
       <br />
-      <Card border="secondary" style={{ width: "15rem", height: 0 }}>
+      <Card border="secondary" style={{ width: "15rem" }}>
         <Card.Header>
           <Nav variant="tabs" defaultActiveKey="#first">
             <Nav.Item>
-              <Nav.Link href="#first">Profile</Nav.Link>
+              <Nav.Link href="#profile">Profile</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link">Saved Links</Nav.Link>
+              <Nav.Link href="#saved_links">Saved Links</Nav.Link>
             </Nav.Item>
           </Nav>
         </Card.Header>

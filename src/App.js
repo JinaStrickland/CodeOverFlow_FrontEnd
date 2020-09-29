@@ -8,9 +8,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
 import AnswerForm from "./Components/AnswerForm";
+import Answer from "./Components/Answer";
 import "./App.css";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import SingleQuestion from "./Components/SingleQuestion";
+import About from "./Components/About";
 
 const url = "http://localhost:3000/questions/";
 
@@ -35,7 +37,7 @@ class App extends Component {
       .then((allQuestions) =>
         this.setState({
           questions: allQuestions.map((question) => {
-            return { ...question, clicked: false };
+            return { ...question, saved: false };
           }),
         })
       );
@@ -99,6 +101,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Route exact path="/" component={About} />
         <MDBContainer fluid>
           <div className="App">
             <Header />
@@ -149,6 +152,7 @@ class App extends Component {
                     />
                   )}
                 />
+                <Route path="/answer" render={() => <Answer />} />
               </Switch>
             </Card>
             <div></div>

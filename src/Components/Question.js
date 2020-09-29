@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Nav } from "react-bootstrap/";
+import { Button, Card } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 let usersUrl = "http://localhost:3000/users/";
@@ -25,7 +25,7 @@ class Question extends React.Component {
 
   clickQuestion = () => {
     console.log(this.props.question);
-    // this.props.question.clicked = !this.props.question.clicked;
+    // this.props.question.saved = !this.props.question.saved;
   };
 
   render() {
@@ -44,16 +44,19 @@ class Question extends React.Component {
           </h6>
         </div>
         <p>{question.body}</p>
+        <Button id="q-asked-time" variant="light" size="sm">
+          {" "}
+          asked on - {question.created_at}
+        </Button>
+        <p> </p>
         <Button variant="info" size="sm">
           {question.tag}
         </Button>
-        {question.answers.any ? (
-          <p>
-            Answers:
-            {question.answers.length}
-          </p>
+        <br/>
+        <br/>
+        {question.answers.length > 0 ? (
+          <p>({question.answers.length}) Answers</p>
         ) : null}
-        <br />
         <br />
       </div>
     );

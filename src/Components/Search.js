@@ -6,8 +6,8 @@ const Search = (props) => {
     <div>
       <Form onChange={(e) => props.handleSearch(e)}>
         <Form.Group controlId="formBasicSearch">
-          <Form.Label>Search Questions</Form.Label>
-          <Form.Control type="text" placeholder="search ..." />
+          <Form.Label>Search questions by tag </Form.Label>
+          <Form.Control type="text" placeholder="ruby, react, js..." />
         </Form.Group>
       </Form>
     </div>
