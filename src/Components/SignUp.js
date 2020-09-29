@@ -23,7 +23,7 @@ class SignUp extends Component {
           email: this.state.email,
           password: this.state.password,
           image: this.state.image,
-          company_id: 1,
+          company_id: 2,
         },
       }),
     })

@@ -46,6 +46,7 @@ class App extends Component {
 
   addQuestion = (e) => {
     e.preventDefault();
+    // debugger;
 
     let title = e.target[0].value;
     let body = e.target[1].value;
@@ -63,7 +64,7 @@ class App extends Component {
           title: title,
           body: body,
           tag: tag,
-          user_id: 1, //needs to be current user
+          user_id: 15, //needs to be current user
         },
       }),
     };
@@ -158,7 +159,7 @@ class App extends Component {
           title: title,
           body: body,
           tag: tag,
-          user_id: 1, //needs to be current user
+          user_id: this.state.editedQuestion.user.id, //needs to be current user
         },
       }),
     };
@@ -203,7 +204,8 @@ class App extends Component {
                     <MainContainer
                       // questions={this.state.questions}
                       questions={this.state.questions.filter((q) =>
-                        q.tag.toLowerCase().includes(this.state.searchTerm)
+                        // q.tag.toLowerCase().includes(this.state.searchTerm)
+                        q.tag.includes(this.state.searchTerm)
                       )}
                       getQuestion={this.getQuestion}
                       handleSearch={this.handleSearch}
@@ -227,9 +229,9 @@ class App extends Component {
                     <QuestionForm
                       routerProps
                       addQuestion={this.addQuestion}
-                      editQuestion={this.editQuestion}
-                      clickedQuestion={this.clickedQuestion}
-                      editedQuestion={this.state.editedQuestion}
+                      // editQuestion={this.editQuestion}
+                      // clickedQuestion={this.clickedQuestion}
+                      // editedQuestion={this.state.editedQuestion}
                     />
                   )}
                 />
