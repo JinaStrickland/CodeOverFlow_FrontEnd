@@ -142,38 +142,38 @@ class App extends Component {
   editQuestion = (e) => {
     e.preventDefault();
     // debugger;
-    // let title = e.target[0].value;
-    // let body = e.target[1].value;
-    // let tag = e.target[2].value;
+    let title = e.target[0].value;
+    let body = e.target[1].value;
+    let tag = e.target[2].value;
 
-    // const configObj = {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     Authorization: `Bearer ${localStorage.token}`,
-    //   },
-    //   body: JSON.stringify({
-    //     question: {
-    //       title: title,
-    //       body: body,
-    //       tag: tag,
-    //       user_id: 1, //needs to be current user
-    //     },
-    //   }),
-    // };
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      body: JSON.stringify({
+        question: {
+          title: title,
+          body: body,
+          tag: tag,
+          user_id: 1, //needs to be current user
+        },
+      }),
+    };
 
-    // fetch(url, configObj)
-    //   .then((res) => res.json())
-    //   .then(
-    //     console.log
+    fetch(url, configObj)
+      .then((res) => res.json())
+      .then(
+        console.log
 
-    //     // (question) =>
-    //     // this.setState({
-    //     //   questions: [...this.state.questions, question],
-    //     // })
-    //   );
-    // e.target.reset();
+        // (question) =>
+        // this.setState({
+        //   questions: [...this.state.questions, question],
+        // })
+      );
+    e.target.reset();
   };
 
   render() {
@@ -183,7 +183,7 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <Route exact path="/" component={About} />
+        <Route exact path="/homepage" />
         <MDBContainer fluid>
           <div className="App">
             <Header />
