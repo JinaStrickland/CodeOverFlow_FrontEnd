@@ -5,24 +5,6 @@ import { Link } from "react-router-dom";
 let usersUrl = "http://localhost:3000/users/";
 
 class Question extends React.Component {
-  state = {
-    user: "",
-  };
-
-  // componentDidMount() {
-  //   fetch(usersUrl)
-  //     .then((resp) => resp.json())
-  //     .then((users) =>
-  //       users.map((foundUser) => {
-  //         if (foundUser.id === this.props.question.user_id) {
-  //           this.setState({
-  //             user: foundUser,
-  //           });
-  //         }
-  //       })
-  //     );
-  // }
-
   // clickQuestion = () => {
   //   console.log(this.props.question);
   //   this.props.question.saved = !this.props.question.saved;
@@ -52,8 +34,8 @@ class Question extends React.Component {
         <Button variant="info" size="sm">
           {question.tag}
         </Button>
-        <br/>
-        <br/>
+        <br />
+        <br />
         {question.answers.length > 0 ? (
           <p>({question.answers.length}) Answers</p>
         ) : null}

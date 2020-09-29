@@ -46,7 +46,7 @@ class App extends Component {
 
   addQuestion = (e) => {
     e.preventDefault();
-    // debugger;
+    debugger;
 
     let title = e.target[0].value;
     let body = e.target[1].value;
