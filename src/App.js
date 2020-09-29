@@ -20,6 +20,7 @@ class App extends Component {
   state = {
     questions: [],
     question: {},
+    savedQuestions: [],
     searchTerm: "",
   };
 
