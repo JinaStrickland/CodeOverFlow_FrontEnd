@@ -15,6 +15,7 @@ import SingleQuestion from "./Components/SingleQuestion";
 import About from "./Components/About";
 
 const url = "http://localhost:3000/questions/";
+const urlA = "http://localhost:3000/answers/";
 
 class App extends Component {
   state = {
@@ -22,18 +23,17 @@ class App extends Component {
     question: {},
     savedQuestions: [],
     searchTerm: "",
+    editedQuestion: {},
+    answer: {},
   };
 
   componentDidMount() {
-    fetch(
-      url
-        , {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
-      }
-    )
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
       .then((resp) => resp.json())
       .then((allQuestions) =>
         this.setState({
@@ -56,7 +56,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        // Authorization: `Bearer ${localStorage.token}`,
+        Authorization: `Bearer ${localStorage.token}`,
       },
       body: JSON.stringify({
         question: {
@@ -86,11 +86,30 @@ class App extends Component {
 
   addAnswer = (e) => {
     e.preventDefault();
-    // debugger;
-
     let body = e.target[0].value;
-
-    // console.log(e.target);
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      body: JSON.stringify({
+        answer: {
+          body: body,
+          user_id: 1, //needs to be current user
+          question_id: 1, //needs to be current question
+        },
+      }),
+    };
+    fetch(urlA, configObj)
+      .then((res) => res.json())
+      .then((newAnswer) =>
+        this.setState({
+          answer: { ...this.state.answer, newAnswer },
+        })
+      );
+    e.target.reset();
   };
 
   handleSearch = (e) => {
@@ -99,9 +118,65 @@ class App extends Component {
     });
   };
 
-  
-  render() {
+  deleteQuestion = (id) => {
+    let newArray = this.state.questions;
 
+    fetch(url + id, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    this.setState({
+      questions: newArray.filter((question) => question.id !== id),
+    });
+  };
+
+  //  edit question
+
+  clickedQuestion = (editedQuestion) => {
+    // console.log(editedQuestion);
+    this.setState({ editedQuestion });
+  };
+
+  editQuestion = (e) => {
+    e.preventDefault();
+    // debugger;
+    // let title = e.target[0].value;
+    // let body = e.target[1].value;
+    // let tag = e.target[2].value;
+
+    // const configObj = {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json",
+    //     Authorization: `Bearer ${localStorage.token}`,
+    //   },
+    //   body: JSON.stringify({
+    //     question: {
+    //       title: title,
+    //       body: body,
+    //       tag: tag,
+    //       user_id: 1, //needs to be current user
+    //     },
+    //   }),
+    // };
+
+    // fetch(url, configObj)
+    //   .then((res) => res.json())
+    //   .then(
+    //     console.log
+
+    //     // (question) =>
+    //     // this.setState({
+    //     //   questions: [...this.state.questions, question],
+    //     // })
+    //   );
+    // e.target.reset();
+  };
+
+  render() {
     // let questions={this.state.questions.filter((q) =>
     //   q.tag.toLowerCase().includes(this.state.searchTerm)
     // )}
@@ -139,13 +214,23 @@ class App extends Component {
                   exact
                   path="/a_question"
                   render={() => (
-                    <SingleQuestion question={this.state.question} />
+                    <SingleQuestion
+                      question={this.state.question}
+                      deleteQuestion={this.deleteQuestion}
+                      clickedQuestion={this.clickedQuestion}
+                    />
                   )}
                 />
                 <Route
                   path="/add_question"
                   render={(routerProps) => (
-                    <QuestionForm routerProps addQuestion={this.addQuestion} />
+                    <QuestionForm
+                      routerProps
+                      addQuestion={this.addQuestion}
+                      editQuestion={this.editQuestion}
+                      clickedQuestion={this.clickedQuestion}
+                      editedQuestion={this.state.editedQuestion}
+                    />
                   )}
                 />
 

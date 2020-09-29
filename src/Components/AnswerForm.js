@@ -7,7 +7,7 @@ const AnswerForm = (props) => {
       <Form onSubmit={(e) => props.addAnswer(e)}>
         <Form.Group controlId="formGroupTitle">
           <Form.Label>Body</Form.Label>
-          <Form.Control type="text" placeholder="Answer" />
+          <Form.Control type="text" placeholder="Your answer" />
         </Form.Group>
 
         <br />

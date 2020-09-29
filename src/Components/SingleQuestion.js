@@ -2,27 +2,19 @@ import React from "react";
 import { Button, Nav } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
-let usersUrl = "http://localhost:3000/users/";
-
 class SingleQuestion extends React.Component {
-  // state = {
-  //   user: "",
-  // };
-
   render() {
     let question = this.props.question;
     let answers_count = question.answers.length;
     let answers = question.answers.map((answer) => (
       <Link to="/answer">
         <li>{answer.body}</li>
+        <br />
       </Link>
     ));
     return (
       <div id="single-question">
-        {/* <p>Username: {this.state.user.username}</p> */}
-        <Nav.Item>
-          <Nav.Link href="/addquestion">edit</Nav.Link>
-        </Nav.Item>
+        {/* <p>Username: {question.user.username}</p> */}
         <br />
         <br />
         <h6>
@@ -34,16 +26,32 @@ class SingleQuestion extends React.Component {
           <strong>Tag: </strong>
           {question.tag}
         </p>
-
-        {answers_count > 0 ? <p>Answers: {answers}</p> : null}
-        <Link to="/add_answer">
-          {" "}
-          <Button id="add-answer" variant="primary" size="sm">
-            Add answer
-          </Button>
-        </Link>
-        <Button variant="danger" size="sm">
-          Delete
+        <br />
+        {answers_count > 0 ? (
+          <p>
+            Answers: <br />
+            <br />
+            {answers}
+          </p>
+        ) : null}
+        <Button
+          id="add-answer"
+          variant="light"
+          size="sm"
+          onClick={() => this.props.clickedQuestion(question)}
+        >
+          <Link to="/add_question"> edit question</Link>
+        </Button>{" "}
+        <Button id="add-answer" variant="light" size="sm">
+          <Link to="/add_answer">Add answer</Link>
+        </Button>{" "}
+        <Button
+          id="delete-question"
+          variant="danger"
+          size="sm"
+          onClick={() => this.props.deleteQuestion(question.id)}
+        >
+          delete question
         </Button>
         <br />
         <br />
