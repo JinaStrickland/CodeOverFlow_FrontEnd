@@ -18,7 +18,7 @@ import About from "./Components/About";
 
 const url = "http://localhost:3000/questions/";
 const urlA = "http://localhost:3000/answers/";
-// const urlUser = "http://localhost:3000/users/";
+const urlUser = "http://localhost:3000/users/";
 
 class App extends Component {
   state = {
@@ -28,6 +28,7 @@ class App extends Component {
     searchTerm: "",
     editedQuestion: {},
     answer: {},
+    currentUser: {},
   };
 
   componentDidMount() {
@@ -45,6 +46,11 @@ class App extends Component {
           }),
         })
       );
+
+    fetch(urlUser)
+      .then((resp) => resp.json())
+      .then((users) => console.log(users.map((user) => user.password_digest)));
+    console.log(localStorage.token);
   }
 
   currentUser = (user) => {
@@ -209,6 +215,7 @@ class App extends Component {
               </MDBContainer>
             </div>
             <Card>
+              {/* {!token ? <Redirect to='/login/' />: */}
               <Switch>
                 <Route
                   exact
@@ -290,8 +297,9 @@ class App extends Component {
                   />
                 </MDBContainer>
               </Switch>
+              {/* // } */}
             </Card>
-            <div></div>
+            // <div></div>
           </div>
         </MDBContainer>
       </BrowserRouter>

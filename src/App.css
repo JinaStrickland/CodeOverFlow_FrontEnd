@@ -34,10 +34,13 @@
 
 #signup-card {
   margin-top: 46px;
+  height: 60rem;
 }
 
 #login-card {
   margin-top: 46px;
+  height: 60rem;
+
   /* margin-left: 10px; */
 }
 
@@ -74,7 +77,13 @@
   /* margin-left: 20px; */
 }
 
+#answer-page {
+  /* margin-top: 40px; */
+  margin-left: 10px;
+  height: 60rem;
+}
 #answer-form {
   margin-top: 40px;
   margin-left: 20px;
+  height: 60rem;
 }
