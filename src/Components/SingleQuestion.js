@@ -14,7 +14,9 @@ class SingleQuestion extends React.Component {
 
     let answers = question.answers.map((answer) => (
       <Link to="/answer">
-        <li>{answer.body}</li>
+        <li>
+          {answer.body} key={answer.id}
+        </li>
         <br />
       </Link>
     ));
