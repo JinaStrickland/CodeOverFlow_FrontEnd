@@ -2,9 +2,6 @@ import React from "react";
 import { Form, Button } from "react-bootstrap/";
 
 const QuestionForm = (props) => {
-  let redirectToHomepage = () => {
-    // props.history.push("/");
-  };
   return (
     <div id="question-form">
       <Form onSubmit={(e) => props.addQuestion(e)}>
@@ -24,7 +21,7 @@ const QuestionForm = (props) => {
             placeholder="example: Java Script"
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={redirectToHomepage}>
+        <Button variant="primary" type="submit">
           Submit
         </Button>
         <br />

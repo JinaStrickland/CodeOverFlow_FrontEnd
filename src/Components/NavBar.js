@@ -2,7 +2,7 @@ import React from "react";
 import Search from "./Search";
 import Profile from "./Profile";
 
-import { Button, Card, Nav, Accordion } from "react-bootstrap/";
+import { Button, Card, Accordion } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
@@ -23,6 +23,7 @@ const NavBar = (props) => {
             </Card>
           </Accordion>
         </Card.Header>
+
         <br />
         <br />
         <br />

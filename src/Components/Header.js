@@ -12,9 +12,15 @@ const Header = (props) => {
   const logInOnClick = useCallback(() => history.push("/login"), [history]);
   const homepageOnClick = useCallback(() => history.push("/"), [history]);
 
+  let redirectToHomepage = () => {
+    this.props.history.push("/");
+  };
+
   const logOut = () => {
     // homepageOnClick();
     localStorage.clear();
+    // redirectToHomepage();
+
     alert("You have logged out successfully");
   };
 
@@ -22,7 +28,7 @@ const Header = (props) => {
     <div>
       {/* <> */}
       <br />
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" fixed="top">
         <Navbar.Brand href="/about">
           <img
             alt=""

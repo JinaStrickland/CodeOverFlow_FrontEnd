@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap/";
+import { Button, Card } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 class SingleQuestion extends React.Component {
@@ -12,7 +12,10 @@ class SingleQuestion extends React.Component {
     let answers_count = question.answers.length;
 
     let answers = question.answers.map((answer) => (
-      <Link to="/answer" onClick={this.props.getAnswer(question)}>
+      <Link
+        to="/answer"
+        // onClick={this.props.getAnswer(question)}
+      >
         <li>{answer.body}</li>
         <br />
       </Link>
@@ -20,12 +23,15 @@ class SingleQuestion extends React.Component {
 
     return (
       <div id="single-question">
+        {/* <Card> */}
         {/* <p>Username: {question.user.username}</p> */}
+        <br />
         <br />
         <h6>
           {" "}
           <strong>Title: {question.title}</strong>
         </h6>
+        <br/>
         <p>Body: {question.body}</p>
         <p>
           <strong>Tag: </strong>
@@ -36,7 +42,8 @@ class SingleQuestion extends React.Component {
           <p>
             Answers: <br />
             <br />
-            {answers}
+            {/* {answers} */}
+            <Link to="/answer">{answers} </Link>
           </p>
         ) : null}
         <Button
@@ -66,6 +73,7 @@ class SingleQuestion extends React.Component {
         </Button>
         <br />
         <br />
+        {/* </Card> */}
       </div>
     );
   }

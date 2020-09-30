@@ -30,12 +30,10 @@ class LogIn extends Component {
         localStorage.token = userInfo.token;
       });
     alert("You are logged in");
+    this.props.history.push("/");
   };
 
-  // redirectToHomepage = () => {
-  redirectToHomepage = () => {
-    // this.props.history.push("/");
-  };
+  redirectToHomepage = () => {};
 
   render() {
     return (
@@ -71,12 +69,7 @@ class LogIn extends Component {
 
             <Col xs="8">
               <br />
-              <Button
-                variant="primary"
-                type="submit"
-                // onClick={() => this.redirectToHomepage()}
-                onClick={() => this.props.currentUser(this.state.user)}
-              >
+              <Button variant="primary" type="submit">
                 Submit
               </Button>
             </Col>

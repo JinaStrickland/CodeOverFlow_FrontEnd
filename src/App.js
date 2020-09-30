@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 import NavBar from "./Components/NavBar";
 import MainContainer from "./MainContainer";
 import SignUp from "./Components/SignUp";
 import LogIn from "./Components/LogIn";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import { browserHistory } from "react-router";
 import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
 import EditQuestionForm from "./Components/EditQuestionForm";
@@ -35,7 +37,7 @@ class App extends Component {
     fetch(url, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${localStorage.token}`,
+        // Authorization: `Bearer ${localStorage.token}`,
       },
     })
       .then((resp) => resp.json())
@@ -46,7 +48,9 @@ class App extends Component {
           }),
         })
       );
+    // sessionStorage.reload = true;  // for redirect to homepage
 
+    // fetch users
     fetch(urlUser)
       .then((resp) => resp.json())
       .then((users) => console.log(users.map((user) => user.password_digest)));
@@ -78,18 +82,21 @@ class App extends Component {
           title: title,
           body: body,
           tag: tag,
-          user_id: 15, //needs to be current user
         },
       }),
     };
 
     fetch(url, configObj)
       .then((res) => res.json())
-      .then((question) =>
-        this.setState({
-          questions: [...this.state.questions, question],
-        })
+      .then(
+        // console.log
+
+        (newQuestion) =>
+          this.setState({
+            questions: [...this.state.questions, newQuestion],
+          })
       );
+    // this.props.history.push("/");
     e.target.reset();
   };
 
@@ -114,7 +121,7 @@ class App extends Component {
       body: JSON.stringify({
         answer: {
           body: body,
-          user_id: 15, //needs to be current user
+          // user_id: 15, //needs to be current user
           question_id: this.state.question.id,
         },
       }),
@@ -130,13 +137,14 @@ class App extends Component {
   };
 
   // get answer tobe displayed
-  getAnswer = (foundQ) => {
-    // foundQ.answers.filter((ans) => console.log(ans));
-    // console.log(foundQ);
-    // this.setState({
-    // answer: foundAnswer
-    // })
-  };
+  // getAnswer = (foundQ) => {
+  //   foundQ.answers.filter((ans) =>
+  //     // console.log(foundQ);
+  //     this.setState({
+  //       answer: ans,
+  //     })
+  //   );
+  // };
 
   // search question by tag
   handleSearch = (e) => {
@@ -204,6 +212,11 @@ class App extends Component {
   };
 
   render() {
+    // if (sessionStorage.reload && history.location.pathname !== "/") {
+    //   console.log(this.props);
+    //   sessionStorage.reload = "";
+    //   history.push("/login");
+    // }
     return (
       <BrowserRouter>
         <MDBContainer fluid>
@@ -237,11 +250,7 @@ class App extends Component {
                     render={(routerProps) => (
                       <MainContainer
                         {...routerProps}
-                        questions={this.state.questions.filter((q) =>
-                          q.tag
-                            .toLowerCase()
-                            .includes(this.state.searchTerm.toLowerCase())
-                        )}
+                        questions={this.state.questions}
                         getQuestion={this.getQuestion}
                         handleSearch={this.handleSearch}
                       />
@@ -299,7 +308,7 @@ class App extends Component {
               </Switch>
               {/* // } */}
             </Card>
-            // <div></div>
+            <Footer />
           </div>
         </MDBContainer>
       </BrowserRouter>

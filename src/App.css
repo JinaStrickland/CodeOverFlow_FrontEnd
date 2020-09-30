@@ -9,13 +9,14 @@
 #nav-bar {
   float: left;
   height: "150rem";
+  margin-top: 21px;
 }
 
 #main-container {
   /* background-image: url(images/codeOverFlow_background.jpeg); */
   float: right;
   /* margin: auto; */
-  /* margin-top: 46px; */
+  margin-top: 46px;
   position: relative;
   /* width: "70rem"; */
   width: auto;
@@ -73,7 +74,15 @@
 }
 
 #question-form {
-  margin-top: 40px;
+  margin-top: 50px;
+  height: 60rem;
+
+  /* margin-left: 20px; */
+}
+
+#edit-question-form {
+  margin-top: 50px;
+  height: 60rem;
   /* margin-left: 20px; */
 }
 
