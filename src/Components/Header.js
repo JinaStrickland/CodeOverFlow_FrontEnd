@@ -12,16 +12,11 @@ const Header = (props) => {
   const logInOnClick = useCallback(() => history.push("/login"), [history]);
   const homepageOnClick = useCallback(() => history.push("/"), [history]);
 
-  let redirectToHomepage = () => {
-    this.props.history.push("/");
-  };
-
   const logOut = () => {
-    // homepageOnClick();
     localStorage.clear();
-    // redirectToHomepage();
 
     alert("You have logged out successfully");
+    // props.history.push("/login");
   };
 
   return (

@@ -7,7 +7,6 @@ import SignUp from "./Components/SignUp";
 import LogIn from "./Components/LogIn";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import { browserHistory } from "react-router";
 import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
 import EditQuestionForm from "./Components/EditQuestionForm";
@@ -20,7 +19,6 @@ import About from "./Components/About";
 
 const url = "http://localhost:3000/questions/";
 const urlA = "http://localhost:3000/answers/";
-const urlUser = "http://localhost:3000/users/";
 
 class App extends Component {
   state = {
@@ -85,8 +83,8 @@ class App extends Component {
             questions: [...this.state.questions, newQuestion],
           })
       );
-    // this.props.history.push("/");
     e.target.reset();
+    // this.props.history.push("/");
   };
 
   getQuestion = (foundQuestion) => {
@@ -123,16 +121,6 @@ class App extends Component {
       );
     e.target.reset();
   };
-
-  // get answer tobe displayed
-  // getAnswer = (foundQ) => {
-  //   foundQ.answers.filter((ans) =>
-  //     // console.log(foundQ);
-  //     this.setState({
-  //       answer: ans,
-  //     })
-  //   );
-  // };
 
   // search question by tag
   handleSearch = (e) => {
@@ -210,6 +198,7 @@ class App extends Component {
         <MDBContainer fluid>
           <div className="App">
             <Header />
+
             <div id="nav-bar">
               <MDBContainer size="sm" id="nav-bar">
                 <NavBar handleSearch={this.handleSearch} />

@@ -29,11 +29,8 @@ class LogIn extends Component {
       .then((userInfo) => {
         localStorage.token = userInfo.token;
       });
-    alert("You are logged in");
     this.props.history.push("/");
   };
-
-  redirectToHomepage = () => {};
 
   render() {
     return (
