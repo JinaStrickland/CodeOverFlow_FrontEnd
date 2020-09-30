@@ -1,5 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap/";
+import { withRouter } from "react-router-dom";
+
 
 const EditQuestionForm = (props) => {
   // console.log(props.editedQuestion);
@@ -53,4 +55,4 @@ const EditQuestionForm = (props) => {
   );
 };
 
-export default EditQuestionForm;
+export default withRouter(EditQuestionForm);

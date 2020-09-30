@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap/";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 // let usersUrl = "http://localhost:3000/users/";
 
@@ -40,4 +41,4 @@ class Question extends React.Component {
   }
 }
 
-export default Question;
+export default withRouter(Question);

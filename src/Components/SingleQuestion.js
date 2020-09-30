@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap/";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class SingleQuestion extends React.Component {
   redirectToHomepage = () => {
@@ -69,4 +70,4 @@ class SingleQuestion extends React.Component {
   }
 }
 
-export default SingleQuestion;
+export default withRouter(SingleQuestion);

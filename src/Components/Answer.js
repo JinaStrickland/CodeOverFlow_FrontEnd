@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap/";
+import { withRouter } from "react-router-dom";
 
 const Answer = (props) => {
   return (
@@ -17,4 +18,4 @@ const Answer = (props) => {
   );
 };
 
-export default Answer;
+export default withRouter(Answer);
