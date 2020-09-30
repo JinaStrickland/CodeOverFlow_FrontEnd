@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+
 import { Button, Col, Card, Form } from "react-bootstrap/";
 
 class SignUp extends Component {
@@ -85,7 +87,7 @@ class SignUp extends Component {
             </Form.Row>
 
             <Form.Row>
-              <Form.Group as={Col}>
+              {/* <Form.Group as={Col}>
                 <Col xs="auto">
                   <Form.Label>Profile Image</Form.Label>
                   <Form.File
@@ -95,7 +97,21 @@ class SignUp extends Component {
                     onChange={(e) => this.handleChange(e)}
                   />
                 </Col>
+              </Form.Group> */}
+
+              <Form.Group as={Col}>
+                <Col xs="auto">
+                  <Form.Label>Profile Image</Form.Label>
+                  <Form.Control
+                    id="image"
+                    type="text"
+                    name="image"
+                    placeholder="image url..."
+                    onChange={(e) => this.handleChange(e)}
+                  />
+                </Col>
               </Form.Group>
+
               <Col xs="8">
                 <br />
                 <Button variant="primary" type="submit">
@@ -110,4 +126,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

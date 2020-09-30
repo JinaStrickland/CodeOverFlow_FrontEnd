@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap/";
+import { Link, withRouter } from "react-router-dom";
 
 const Signout = (props) => {
   const logOut = () => {
@@ -18,4 +19,4 @@ const Signout = (props) => {
   );
 };
 
-export default Signout;
+export default withRouter(Signout);

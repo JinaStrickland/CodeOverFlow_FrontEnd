@@ -29,7 +29,7 @@ class LogIn extends Component {
       .then((userInfo) => {
         localStorage.token = userInfo.token;
       });
-    this.props.history.push("/");
+    this.props.history.push("/homepage");
   };
 
   render() {

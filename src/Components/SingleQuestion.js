@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 class SingleQuestion extends React.Component {
   redirectToHomepage = () => {
-    this.props.history.push("/");
+    this.props.history.push("/homepage");
   };
 
   render() {
@@ -39,8 +39,8 @@ class SingleQuestion extends React.Component {
           <p>
             Answers: <br />
             <br />
-            {/* {answers} */}
-            <Link to="/answer">{answers} </Link>
+            {answers}
+            {/* <Link to="/answer">{answers} </Link> */}
           </p>
         ) : null}
         <Button
@@ -51,12 +51,7 @@ class SingleQuestion extends React.Component {
         >
           <Link to="/edit_question"> edit question</Link>
         </Button>{" "}
-        <Button
-          id="add-answer"
-          variant="light"
-          size="sm"
-          // onClick={this.props.currentQuestion}
-        >
+        <Button id="add-answer" variant="light" size="sm">
           <Link to="/add_answer">Add answer</Link>
         </Button>{" "}
         <Button
@@ -64,13 +59,11 @@ class SingleQuestion extends React.Component {
           variant="danger"
           size="sm"
           onClick={() => this.props.deleteQuestion(question.id)}
-          // onClick={() => this.redirectToHomepage()}
         >
           delete question
         </Button>
         <br />
         <br />
-        {/* </Card> */}
       </div>
     );
   }

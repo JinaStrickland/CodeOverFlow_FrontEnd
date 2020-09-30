@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Footer = (props) => {
   return (
-    <div>
+    <div id="footer">
       <br />
       <Navbar bg="dark" variant="dark" expand="lg">
         {/* <img

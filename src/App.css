@@ -3,7 +3,10 @@
 }
 
 #about-page {
-  background-image: url(images/codeOverFlow_background.jpeg);
+  margin-top: 46px;
+  position: relative;
+  width: "70rem";
+  height: "200rem";
 }
 
 #nav-bar {
@@ -24,12 +27,8 @@
 }
 
 #single-question {
-  /* float: right; */
-  /* margin: auto; */
   margin-top: 46px;
   position: relative;
-  /* width: "70rem"; */
-  /* width: auto; */
   height: 60rem;
   margin-left: 15px;
 }
@@ -42,8 +41,6 @@
 #login-card {
   margin-top: 46px;
   height: 60rem;
-
-  /* margin-left: 10px; */
 }
 
 #user-image {
@@ -77,23 +74,25 @@
 #question-form {
   margin-top: 50px;
   height: 60rem;
-
-  /* margin-left: 20px; */
 }
 
 #edit-question-form {
   margin-top: 50px;
   height: 60rem;
-  /* margin-left: 20px; */
 }
 
 #answer-page {
-  /* margin-top: 40px; */
   margin-left: 10px;
   height: 60rem;
 }
 #answer-form {
   margin-top: 40px;
   margin-left: 20px;
-  height: 60rem;
+  height: 150rem;
+}
+
+#footer {
+  position: relative;
+  height: 80px;
+  clear: both;
 }

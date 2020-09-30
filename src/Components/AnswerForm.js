@@ -1,9 +1,13 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+
 import { Button, Form } from "react-bootstrap/";
 
 const AnswerForm = (props) => {
   return (
     <div id="answer-form">
+      <br />
+      <br />
       <Form onSubmit={(e) => props.addAnswer(e)}>
         <Form.Group controlId="formGroupTitle">
           <Form.Label>Body</Form.Label>
@@ -20,4 +24,4 @@ const AnswerForm = (props) => {
   );
 };
 
-export default AnswerForm;
+export default withRouter(AnswerForm);

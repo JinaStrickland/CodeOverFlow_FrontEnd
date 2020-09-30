@@ -7,6 +7,7 @@ import SignUp from "./Components/SignUp";
 import LogIn from "./Components/LogIn";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
 import EditQuestionForm from "./Components/EditQuestionForm";
@@ -119,6 +120,8 @@ class App extends Component {
           question: { ...this.state.question, newAnswer },
         })
       );
+    // props.history.push("/");
+    // props.history.push("/login");
     e.target.reset();
   };
 
@@ -183,16 +186,9 @@ class App extends Component {
       });
   };
 
-  redirectToHomepage = () => {
-    console.log(this.props.history.push("/homepage"));
-  };
+  loggedIn = () => {};
 
   render() {
-    // if (sessionStorage.reload && history.location.pathname !== "/") {
-    //   console.log(this.props);
-    //   sessionStorage.reload = "";
-    //   history.push("/login");
-    // }
     return (
       <BrowserRouter>
         <MDBContainer fluid>
@@ -206,6 +202,11 @@ class App extends Component {
             </div>
             <Card>
               <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={(routerProps) => <About {...routerProps} />}
+                />
                 <Route
                   exact
                   path="/login"
@@ -222,7 +223,7 @@ class App extends Component {
                   <Route path="/about" component={About} />
                   <Route
                     exact
-                    path="/"
+                    path="/homepage"
                     render={(routerProps) => (
                       <MainContainer
                         {...routerProps}
@@ -297,3 +298,4 @@ class App extends Component {
 }
 
 export default App;
+// export default withRouter (App);
