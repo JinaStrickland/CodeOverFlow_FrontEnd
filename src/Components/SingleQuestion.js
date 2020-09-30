@@ -12,10 +12,7 @@ class SingleQuestion extends React.Component {
     let answers_count = question.answers.length;
 
     let answers = question.answers.map((answer) => (
-      <Link
-        to="/answer"
-        // onClick={this.props.getAnswer(question)}
-      >
+      <Link to="/answer">
         <li>{answer.body}</li>
         <br />
       </Link>
@@ -31,7 +28,7 @@ class SingleQuestion extends React.Component {
           {" "}
           <strong>Title: {question.title}</strong>
         </h6>
-        <br/>
+        <br />
         <p>Body: {question.body}</p>
         <p>
           <strong>Tag: </strong>

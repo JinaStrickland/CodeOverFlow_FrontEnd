@@ -48,18 +48,7 @@ class App extends Component {
           }),
         })
       );
-    // sessionStorage.reload = true;  // for redirect to homepage
-
-    // fetch users
-    fetch(urlUser)
-      .then((resp) => resp.json())
-      .then((users) => console.log(users.map((user) => user.password_digest)));
-    console.log(localStorage.token);
   }
-
-  currentUser = (user) => {
-    // console.log(user);
-  };
 
   // ask question
   addQuestion = (e) => {
@@ -121,7 +110,6 @@ class App extends Component {
       body: JSON.stringify({
         answer: {
           body: body,
-          // user_id: 15, //needs to be current user
           question_id: this.state.question.id,
         },
       }),
@@ -228,7 +216,6 @@ class App extends Component {
               </MDBContainer>
             </div>
             <Card>
-              {/* {!token ? <Redirect to='/login/' />: */}
               <Switch>
                 <Route
                   exact
@@ -250,7 +237,11 @@ class App extends Component {
                     render={(routerProps) => (
                       <MainContainer
                         {...routerProps}
-                        questions={this.state.questions}
+                        questions={this.state.questions.filter((q) =>
+                          q.tag
+                            .toLowerCase()
+                            .includes(this.state.searchTerm.toLowerCase())
+                        )}
                         getQuestion={this.getQuestion}
                         handleSearch={this.handleSearch}
                       />

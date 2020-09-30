@@ -14,12 +14,13 @@
 
 #main-container {
   /* background-image: url(images/codeOverFlow_background.jpeg); */
-  float: right;
+  /* float: right; */
   /* margin: auto; */
   margin-top: 46px;
   position: relative;
   /* width: "70rem"; */
   width: auto;
+  height: "200rem";
 }
 
 #single-question {
