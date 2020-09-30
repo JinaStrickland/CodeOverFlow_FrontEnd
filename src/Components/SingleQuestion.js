@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Nav } from "react-bootstrap/";
+import { Button } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 class SingleQuestion extends React.Component {
@@ -10,8 +10,9 @@ class SingleQuestion extends React.Component {
   render() {
     let question = this.props.question;
     let answers_count = question.answers.length;
+
     let answers = question.answers.map((answer) => (
-      <Link to="/answer">
+      <Link to="/answer" onClick={this.props.getAnswer(question)}>
         <li>{answer.body}</li>
         <br />
       </Link>
@@ -20,7 +21,6 @@ class SingleQuestion extends React.Component {
     return (
       <div id="single-question">
         {/* <p>Username: {question.user.username}</p> */}
-        <br />
         <br />
         <h6>
           {" "}

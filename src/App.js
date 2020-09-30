@@ -18,6 +18,7 @@ import About from "./Components/About";
 
 const url = "http://localhost:3000/questions/";
 const urlA = "http://localhost:3000/answers/";
+// const urlUser = "http://localhost:3000/users/";
 
 class App extends Component {
   state = {
@@ -47,7 +48,7 @@ class App extends Component {
   }
 
   currentUser = (user) => {
-    console.log(user);
+    // console.log(user);
   };
 
   // ask question
@@ -94,10 +95,6 @@ class App extends Component {
 
   // add answer to a question
 
-  currentQuestion = (value) => {
-    // debugger;
-    console.log(value);
-  };
   addAnswer = (e) => {
     e.preventDefault();
     let body = e.target[0].value;
@@ -112,7 +109,7 @@ class App extends Component {
         answer: {
           body: body,
           user_id: 15, //needs to be current user
-          question_id: this.state.question.id, //needs to be current question
+          question_id: this.state.question.id,
         },
       }),
     };
@@ -126,6 +123,16 @@ class App extends Component {
     e.target.reset();
   };
 
+  // get answer tobe displayed
+  getAnswer = (foundQ) => {
+    // foundQ.answers.filter((ans) => console.log(ans));
+    // console.log(foundQ);
+    // this.setState({
+    // answer: foundAnswer
+    // })
+  };
+
+  // search question by tag
   handleSearch = (e) => {
     this.setState({
       searchTerm: e.target.value,
@@ -145,6 +152,7 @@ class App extends Component {
     this.setState({
       questions: newArray.filter((question) => question.id !== id),
     });
+    alert("Question has been deleted!");
   };
 
   //  edit question
@@ -214,69 +222,73 @@ class App extends Component {
                   path="/signup"
                   render={(routerProps) => <SignUp {...routerProps} />}
                 />
-                <Route
-                  exact
-                  path="/"
-                  render={(routerProps) => (
-                    <MainContainer
-                      {...routerProps}
-                      questions={this.state.questions.filter((q) =>
-                        q.tag
-                          .toLowerCase()
-                          .includes(this.state.searchTerm.toLowerCase())
-                      )}
-                      getQuestion={this.getQuestion}
-                      handleSearch={this.handleSearch}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/a_question"
-                  render={(routerProps) => (
-                    <SingleQuestion
-                      {...routerProps}
-                      question={this.state.question}
-                      deleteQuestion={this.deleteQuestion}
-                      clickedQuestion={this.clickedQuestion}
-                    />
-                  )}
-                />
-                <Route
-                  path="/add_question"
-                  render={(routerProps) => (
-                    <QuestionForm
-                      {...routerProps}
-                      addQuestion={this.addQuestion}
-                    />
-                  )}
-                />
-                <Route
-                  path="/edit_question"
-                  render={(routerProps) => (
-                    <EditQuestionForm
-                      {...routerProps}
-                      editQuestion={this.editQuestion}
-                      editedQuestion={this.state.editedQuestion}
-                      patchEditedQuestion={this.patchEditedQuestion}
-                    />
-                  )}
-                />
+                <MDBContainer size="sm">
+                  <Route path="/about" component={About} />
+                  <Route
+                    exact
+                    path="/"
+                    render={(routerProps) => (
+                      <MainContainer
+                        {...routerProps}
+                        questions={this.state.questions.filter((q) =>
+                          q.tag
+                            .toLowerCase()
+                            .includes(this.state.searchTerm.toLowerCase())
+                        )}
+                        getQuestion={this.getQuestion}
+                        handleSearch={this.handleSearch}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/a_question"
+                    render={(routerProps) => (
+                      <SingleQuestion
+                        {...routerProps}
+                        question={this.state.question}
+                        deleteQuestion={this.deleteQuestion}
+                        clickedQuestion={this.clickedQuestion}
+                        getAnswer={this.getAnswer}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/add_question"
+                    render={(routerProps) => (
+                      <QuestionForm
+                        {...routerProps}
+                        addQuestion={this.addQuestion}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/edit_question"
+                    render={(routerProps) => (
+                      <EditQuestionForm
+                        {...routerProps}
+                        editQuestion={this.editQuestion}
+                        editedQuestion={this.state.editedQuestion}
+                        patchEditedQuestion={this.patchEditedQuestion}
+                      />
+                    )}
+                  />
 
-                <Route
-                  path="/add_answer"
-                  render={(routerProps) => (
-                    <AnswerForm
-                      {...routerProps}
-                      addAnswer={this.addAnswer}
-                      currentQuestion={this.state.question}
-                    />
-                  )}
-                />
-                <Route
-                  path="/answer"
-                  render={(routerProps) => <Answer {...routerProps} />}
-                />
+                  <Route
+                    path="/add_answer"
+                    render={(routerProps) => (
+                      <AnswerForm
+                        {...routerProps}
+                        addAnswer={this.addAnswer}
+                        currentQuestion={this.state.question}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/answer"
+                    render={(routerProps) => <Answer {...routerProps} />}
+                  />
+                </MDBContainer>
               </Switch>
             </Card>
             <div></div>

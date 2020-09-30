@@ -1,23 +1,27 @@
 import React from "react";
 import Search from "./Search";
-import { Button, Card, Nav } from "react-bootstrap/";
+import Profile from "./Profile";
+
+import { Button, Card, Nav, Accordion } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   return (
     <div>
-      <br />
-      <br />
       <Card border="secondary" style={{ width: "15rem" }}>
         <Card.Header>
-          <Nav variant="tabs" defaultActiveKey="#first">
-            <Nav.Item>
-              <Nav.Link href="/profile">Profile</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/saved_links">Saved Links</Nav.Link>
-            </Nav.Item>
-          </Nav>
+          <Accordion defaultActiveKey="0">
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                  Profile
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body> {<Profile />}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
         </Card.Header>
         <br />
         <br />

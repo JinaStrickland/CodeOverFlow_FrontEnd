@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Card } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
-let usersUrl = "http://localhost:3000/users/";
+// let usersUrl = "http://localhost:3000/users/";
 
 class Question extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class Question extends React.Component {
       <div>
         <Card></Card>
         <br />
-        <img id="user-image" src={`${question.user.image}`}></img>{" "}
+        <img id="user-image" src={`${question.user.image}`} alt=""></img>{" "}
         <p id="user-name">{question.user.username}</p> <br /> <br />
         <div onClick={() => this.props.getQuestion(question)}>
           <h6>

@@ -5,7 +5,7 @@ const EditQuestionForm = (props) => {
   // console.log(props.editedQuestion);
   const { title, body, tag } = props.editedQuestion;
   return (
-    <div id="question-form">
+    <div id="edit-question-form">
       <Form
       // onSubmit={(e) => props.editQuestion(e)}
       >

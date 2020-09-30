@@ -1,36 +1,41 @@
 #root {
   background-image: url(images/codeOverFlow_background.jpeg);
 }
+
+#about-page {
+  background-image: url(images/codeOverFlow_background.jpeg);
+}
+
 #nav-bar {
   float: left;
   height: "150rem";
 }
 
 #main-container {
+  /* background-image: url(images/codeOverFlow_background.jpeg); */
   float: right;
   /* margin: auto; */
-  margin-top: 46px;
+  /* margin-top: 46px; */
   position: relative;
   /* width: "70rem"; */
   width: auto;
 }
 
 #single-question {
-  float: right;
+  /* float: right; */
   /* margin: auto; */
   margin-top: 46px;
   position: relative;
   /* width: "70rem"; */
-  width: auto;
-}
-
-#single-question {
+  /* width: auto; */
+  height: 60rem;
   margin-left: 15px;
 }
 
 #signup-card {
   margin-top: 46px;
 }
+
 #login-card {
   margin-top: 46px;
   /* margin-left: 10px; */
@@ -64,7 +69,11 @@
   float: right;
 }
 
-#question-form,
+#question-form {
+  margin-top: 40px;
+  /* margin-left: 20px; */
+}
+
 #answer-form {
   margin-top: 40px;
   margin-left: 20px;

@@ -10,12 +10,12 @@ const Header = (props) => {
   const history = useHistory();
   const handleOnClick = useCallback(() => history.push("/signup"), [history]);
   const logInOnClick = useCallback(() => history.push("/login"), [history]);
-  const homepageOnClick = useCallback(() => history.push("/"), [
-    history,
-  ]);
+  const homepageOnClick = useCallback(() => history.push("/"), [history]);
 
   const logOut = () => {
+    // homepageOnClick();
     localStorage.clear();
+    alert("You have logged out successfully");
   };
 
   return (
@@ -23,7 +23,7 @@ const Header = (props) => {
       {/* <> */}
       <br />
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/about">
           <img
             alt=""
             src={require(`../images/codeOverFlow_logo.jpg`)}

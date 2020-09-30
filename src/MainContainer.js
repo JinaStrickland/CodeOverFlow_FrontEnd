@@ -1,5 +1,5 @@
 import React from "react";
-import Answer from "./Components/Answer";
+// import Answer from "./Components/Answer";
 import Question from "./Components/Question";
 import Card from "react-bootstrap/Card";
 // import AnswerForm from "./Components/AnswerForm";
