@@ -10,7 +10,7 @@ const Header = (props) => {
   const history = useHistory();
   const handleOnClick = useCallback(() => history.push("/signup"), [history]);
   const logInOnClick = useCallback(() => history.push("/login"), [history]);
-  const homepageOnClick = useCallback(() => history.push("/homepage"), [
+  const homepageOnClick = useCallback(() => history.push("/"), [
     history,
   ]);
 

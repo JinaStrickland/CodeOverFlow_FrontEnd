@@ -3,6 +3,10 @@ import { Button, Nav } from "react-bootstrap/";
 import { Link } from "react-router-dom";
 
 class SingleQuestion extends React.Component {
+  redirectToHomepage = () => {
+    this.props.history.push("/");
+  };
+
   render() {
     let question = this.props.question;
     let answers_count = question.answers.length;
@@ -12,6 +16,7 @@ class SingleQuestion extends React.Component {
         <br />
       </Link>
     ));
+
     return (
       <div id="single-question">
         {/* <p>Username: {question.user.username}</p> */}
@@ -40,9 +45,14 @@ class SingleQuestion extends React.Component {
           size="sm"
           onClick={() => this.props.clickedQuestion(question)}
         >
-          <Link to="/add_question"> edit question</Link>
+          <Link to="/edit_question"> edit question</Link>
         </Button>{" "}
-        <Button id="add-answer" variant="light" size="sm">
+        <Button
+          id="add-answer"
+          variant="light"
+          size="sm"
+          // onClick={this.props.currentQuestion}
+        >
           <Link to="/add_answer">Add answer</Link>
         </Button>{" "}
         <Button
@@ -50,6 +60,7 @@ class SingleQuestion extends React.Component {
           variant="danger"
           size="sm"
           onClick={() => this.props.deleteQuestion(question.id)}
+          // onClick={() => this.redirectToHomepage()}
         >
           delete question
         </Button>

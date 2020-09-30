@@ -5,14 +5,9 @@ import { Link } from "react-router-dom";
 let usersUrl = "http://localhost:3000/users/";
 
 class Question extends React.Component {
-  // clickQuestion = () => {
-  //   console.log(this.props.question);
-  //   this.props.question.saved = !this.props.question.saved;
-  // };
-
   render() {
     let question = this.props.question;
-    let answers_count = question.answers.length;
+    // let answers_count = question.answers.length;
     return (
       <div>
         <Card></Card>

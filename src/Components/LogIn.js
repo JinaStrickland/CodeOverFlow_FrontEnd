@@ -31,6 +31,11 @@ class LogIn extends Component {
       });
   };
 
+  // redirectToHomepage = () => {
+  redirectToHomepage = () => {
+    // this.props.history.push("/");
+  };
+
   render() {
     return (
       <div id="login-card">
@@ -65,7 +70,12 @@ class LogIn extends Component {
 
             <Col xs="8">
               <br />
-              <Button variant="primary" type="submit">
+              <Button
+                variant="primary"
+                type="submit"
+                // onClick={() => this.redirectToHomepage()}
+                onClick={() => this.props.currentUser(this.state.user)}
+              >
                 Submit
               </Button>
             </Col>

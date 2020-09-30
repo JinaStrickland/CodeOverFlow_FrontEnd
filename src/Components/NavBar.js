@@ -12,13 +12,19 @@ const NavBar = (props) => {
         <Card.Header>
           <Nav variant="tabs" defaultActiveKey="#first">
             <Nav.Item>
-              <Nav.Link href="#profile">Profile</Nav.Link>
+              <Nav.Link href="/profile">Profile</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#saved_links">Saved Links</Nav.Link>
+              <Nav.Link href="/saved_links">Saved Links</Nav.Link>
             </Nav.Item>
           </Nav>
         </Card.Header>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <Card.Body>

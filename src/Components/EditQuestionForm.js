@@ -2,11 +2,13 @@ import React from "react";
 import { Form, Button } from "react-bootstrap/";
 
 const EditQuestionForm = (props) => {
-  console.log(props.editedQuestion);
+  // console.log(props.editedQuestion);
   const { title, body, tag } = props.editedQuestion;
   return (
     <div id="question-form">
-      <Form onSubmit={(e) => props.editQuestion(e)}>
+      <Form
+      // onSubmit={(e) => props.editQuestion(e)}
+      >
         <Form.Group controlId="formGroupTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -37,7 +39,11 @@ const EditQuestionForm = (props) => {
             onChange={props.editQuestion}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={props.patchEditedQuestion}
+        >
           Submit
         </Button>
         <br />

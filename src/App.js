@@ -4,9 +4,11 @@ import NavBar from "./Components/NavBar";
 import MainContainer from "./MainContainer";
 import SignUp from "./Components/SignUp";
 import LogIn from "./Components/LogIn";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
+import EditQuestionForm from "./Components/EditQuestionForm";
 import AnswerForm from "./Components/AnswerForm";
 import Answer from "./Components/Answer";
 import "./App.css";
@@ -44,9 +46,14 @@ class App extends Component {
       );
   }
 
+  currentUser = (user) => {
+    console.log(user);
+  };
+
+  // ask question
   addQuestion = (e) => {
     e.preventDefault();
-    debugger;
+    // debugger;
 
     let title = e.target[0].value;
     let body = e.target[1].value;
@@ -85,6 +92,12 @@ class App extends Component {
     });
   };
 
+  // add answer to a question
+
+  currentQuestion = (value) => {
+    // debugger;
+    console.log(value);
+  };
   addAnswer = (e) => {
     e.preventDefault();
     let body = e.target[0].value;
@@ -98,8 +111,8 @@ class App extends Component {
       body: JSON.stringify({
         answer: {
           body: body,
-          user_id: 1, //needs to be current user
-          question_id: 1, //needs to be current question
+          user_id: 15, //needs to be current user
+          question_id: this.state.question.id, //needs to be current question
         },
       }),
     };
@@ -107,7 +120,7 @@ class App extends Component {
       .then((res) => res.json())
       .then((newAnswer) =>
         this.setState({
-          answer: { ...this.state.answer, newAnswer },
+          question: { ...this.state.question, newAnswer },
         })
       );
     e.target.reset();
@@ -119,6 +132,7 @@ class App extends Component {
     });
   };
 
+  // delete q
   deleteQuestion = (id) => {
     let newArray = this.state.questions;
 
@@ -134,19 +148,22 @@ class App extends Component {
   };
 
   //  edit question
-
   clickedQuestion = (editedQuestion) => {
-    // console.log(editedQuestion);
     this.setState({ editedQuestion });
   };
 
   editQuestion = (e) => {
     e.preventDefault();
-    // debugger;
-    let title = e.target[0].value;
-    let body = e.target[1].value;
-    let tag = e.target[2].value;
+    let name = e.target.name;
+    let value = e.target.value;
 
+    this.setState({
+      editedQuestion: { ...this.state.editedQuestion, [name]: value },
+    });
+  };
+
+  patchEditedQuestion = () => {
+    let question = this.state.editedQuestion;
     const configObj = {
       method: "PATCH",
       headers: {
@@ -154,37 +171,27 @@ class App extends Component {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.token}`,
       },
-      body: JSON.stringify({
-        question: {
-          title: title,
-          body: body,
-          tag: tag,
-          user_id: this.state.editedQuestion.user.id, //needs to be current user
-        },
-      }),
+      body: JSON.stringify(question),
     };
-
-    fetch(url, configObj)
+    fetch(url + question.id, configObj)
       .then((res) => res.json())
-      .then(
-        console.log
+      .then((updatedQ) => {
+        let questions = this.state.questions.map((q) => {
+          if (q.id === updatedQ.id) return updatedQ;
+          else return q;
+        });
 
-        // (question) =>
-        // this.setState({
-        //   questions: [...this.state.questions, question],
-        // })
-      );
-    e.target.reset();
+        this.setState({ questions });
+      });
+  };
+
+  redirectToHomepage = () => {
+    console.log(this.props.history.push("/homepage"));
   };
 
   render() {
-    // let questions={this.state.questions.filter((q) =>
-    //   q.tag.toLowerCase().includes(this.state.searchTerm)
-    // )}
-
     return (
       <BrowserRouter>
-        <Route exact path="/homepage" />
         <MDBContainer fluid>
           <div className="App">
             <Header />
@@ -195,17 +202,28 @@ class App extends Component {
             </div>
             <Card>
               <Switch>
-                <Route exact path="/login" component={LogIn} />
-                <Route exact path="/signup" component={SignUp} />
                 <Route
                   exact
-                  path="/homepage"
-                  render={() => (
+                  path="/login"
+                  render={(routerProps) => (
+                    <LogIn {...routerProps} currentUser={this.currentUser} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/signup"
+                  render={(routerProps) => <SignUp {...routerProps} />}
+                />
+                <Route
+                  exact
+                  path="/"
+                  render={(routerProps) => (
                     <MainContainer
-                      // questions={this.state.questions}
+                      {...routerProps}
                       questions={this.state.questions.filter((q) =>
-                        // q.tag.toLowerCase().includes(this.state.searchTerm)
-                        q.tag.includes(this.state.searchTerm)
+                        q.tag
+                          .toLowerCase()
+                          .includes(this.state.searchTerm.toLowerCase())
                       )}
                       getQuestion={this.getQuestion}
                       handleSearch={this.handleSearch}
@@ -215,8 +233,9 @@ class App extends Component {
                 <Route
                   exact
                   path="/a_question"
-                  render={() => (
+                  render={(routerProps) => (
                     <SingleQuestion
+                      {...routerProps}
                       question={this.state.question}
                       deleteQuestion={this.deleteQuestion}
                       clickedQuestion={this.clickedQuestion}
@@ -227,25 +246,37 @@ class App extends Component {
                   path="/add_question"
                   render={(routerProps) => (
                     <QuestionForm
-                      routerProps
+                      {...routerProps}
                       addQuestion={this.addQuestion}
-                      // editQuestion={this.editQuestion}
-                      // clickedQuestion={this.clickedQuestion}
-                      // editedQuestion={this.state.editedQuestion}
+                    />
+                  )}
+                />
+                <Route
+                  path="/edit_question"
+                  render={(routerProps) => (
+                    <EditQuestionForm
+                      {...routerProps}
+                      editQuestion={this.editQuestion}
+                      editedQuestion={this.state.editedQuestion}
+                      patchEditedQuestion={this.patchEditedQuestion}
                     />
                   )}
                 />
 
                 <Route
                   path="/add_answer"
-                  render={() => (
+                  render={(routerProps) => (
                     <AnswerForm
+                      {...routerProps}
                       addAnswer={this.addAnswer}
-                      // question={this.state.question}
+                      currentQuestion={this.state.question}
                     />
                   )}
                 />
-                <Route path="/answer" render={() => <Answer />} />
+                <Route
+                  path="/answer"
+                  render={(routerProps) => <Answer {...routerProps} />}
+                />
               </Switch>
             </Card>
             <div></div>
