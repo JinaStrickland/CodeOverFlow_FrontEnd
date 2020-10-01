@@ -6,7 +6,7 @@ import MainContainer from "./MainContainer";
 import SignUp from "./Components/SignUp";
 import LogIn from "./Components/LogIn";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
@@ -42,11 +42,13 @@ class App extends Component {
       .then((resp) => resp.json())
       .then((allQuestions) =>
         this.setState({
-          questions: allQuestions.map((question) => {
-            return { ...question, saved: false };
-          }),
+          questions: allQuestions.reverse(),
+          // .map((question) => {
+          //   return { ...question, saved: false };
+          // }),
         })
       );
+    // localStorage.setItem
   }
 
   // ask question
@@ -121,7 +123,8 @@ class App extends Component {
           // questions: [...this.state.questions, newAnswer],
         })
       );
-    // props.history.push("/homepage");
+    this.props.history.push("/homepage");
+
     e.target.reset();
   };
 
@@ -146,6 +149,7 @@ class App extends Component {
       questions: newArray.filter((question) => question.id !== id),
     });
     alert("Question has been deleted!");
+    this.props.history.push("/homepage");
   };
 
   //  edit question
@@ -161,6 +165,8 @@ class App extends Component {
     this.setState({
       editedQuestion: { ...this.state.editedQuestion, [name]: value },
     });
+    // this.props.history.push("/homepage");
+
   };
 
   patchEditedQuestion = () => {
@@ -184,118 +190,118 @@ class App extends Component {
 
         this.setState({ questions });
       });
+    // this.props.history.push("/homepage");
+
   };
 
-  loggedIn = () => {};
+  // loggedIn = () => {};
 
   render() {
     return (
-      <BrowserRouter>
-        <MDBContainer fluid>
-          <div className="App">
-            <Header />
+      <MDBContainer fluid>
+        <div className="App">
+          <Header />
 
-            <div id="nav-bar">
-              <MDBContainer size="sm" id="nav-bar">
-                <NavBar handleSearch={this.handleSearch} />
-              </MDBContainer>
-            </div>
-            <Card>
-              <Switch>
+          <div id="nav-bar">
+            <MDBContainer size="sm" id="nav-bar">
+              <NavBar handleSearch={this.handleSearch} />
+            </MDBContainer>
+          </div>
+          <Card>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={(routerProps) => <About {...routerProps} />}
+              />
+              <Route
+                exact
+                path="/login"
+                render={(routerProps) => (
+                  <LogIn {...routerProps} currentUser={this.currentUser} />
+                )}
+              />
+              <Route
+                exact
+                path="/signup"
+                render={(routerProps) => <SignUp {...routerProps} />}
+              />
+              <MDBContainer size="sm">
+                <Route path="/about" component={About} />
                 <Route
                   exact
-                  path="/"
-                  render={(routerProps) => <About {...routerProps} />}
-                />
-                <Route
-                  exact
-                  path="/login"
+                  path="/homepage"
                   render={(routerProps) => (
-                    <LogIn {...routerProps} currentUser={this.currentUser} />
+                    <MainContainer
+                      {...routerProps}
+                      questions={this.state.questions.filter((q) =>
+                        q.tag
+                          .toLowerCase()
+                          .includes(this.state.searchTerm.toLowerCase())
+                      )}
+                      getQuestion={this.getQuestion}
+                      handleSearch={this.handleSearch}
+                    />
                   )}
                 />
                 <Route
                   exact
-                  path="/signup"
-                  render={(routerProps) => <SignUp {...routerProps} />}
+                  path="/a_question"
+                  render={(routerProps) => (
+                    <SingleQuestion
+                      {...routerProps}
+                      question={this.state.question}
+                      deleteQuestion={this.deleteQuestion}
+                      clickedQuestion={this.clickedQuestion}
+                      getAnswer={this.getAnswer}
+                    />
+                  )}
                 />
-                <MDBContainer size="sm">
-                  <Route path="/about" component={About} />
-                  <Route
-                    exact
-                    path="/homepage"
-                    render={(routerProps) => (
-                      <MainContainer
-                        {...routerProps}
-                        questions={this.state.questions.filter((q) =>
-                          q.tag
-                            .toLowerCase()
-                            .includes(this.state.searchTerm.toLowerCase())
-                        )}
-                        getQuestion={this.getQuestion}
-                        handleSearch={this.handleSearch}
-                      />
-                    )}
-                  />
-                  <Route
-                    exact
-                    path="/a_question"
-                    render={(routerProps) => (
-                      <SingleQuestion
-                        {...routerProps}
-                        question={this.state.question}
-                        deleteQuestion={this.deleteQuestion}
-                        clickedQuestion={this.clickedQuestion}
-                        getAnswer={this.getAnswer}
-                      />
-                    )}
-                  />
-                  <Route
-                    path="/add_question"
-                    render={(routerProps) => (
-                      <QuestionForm
-                        {...routerProps}
-                        addQuestion={this.addQuestion}
-                      />
-                    )}
-                  />
-                  <Route
-                    path="/edit_question"
-                    render={(routerProps) => (
-                      <EditQuestionForm
-                        {...routerProps}
-                        editQuestion={this.editQuestion}
-                        editedQuestion={this.state.editedQuestion}
-                        patchEditedQuestion={this.patchEditedQuestion}
-                      />
-                    )}
-                  />
+                <Route
+                  path="/add_question"
+                  render={(routerProps) => (
+                    <QuestionForm
+                      {...routerProps}
+                      addQuestion={this.addQuestion}
+                    />
+                  )}
+                />
+                <Route
+                  path="/edit_question"
+                  render={(routerProps) => (
+                    <EditQuestionForm
+                      {...routerProps}
+                      editQuestion={this.editQuestion}
+                      editedQuestion={this.state.editedQuestion}
+                      patchEditedQuestion={this.patchEditedQuestion}
+                    />
+                  )}
+                />
 
-                  <Route
-                    path="/add_answer"
-                    render={(routerProps) => (
-                      <AnswerForm
-                        {...routerProps}
-                        addAnswer={this.addAnswer}
-                        currentQuestion={this.state.question}
-                      />
-                    )}
-                  />
-                  <Route
-                    path="/answer"
-                    render={(routerProps) => <Answer {...routerProps} />}
-                  />
-                </MDBContainer>
-              </Switch>
-              {/* // } */}
-            </Card>
-            <Footer />
-          </div>
-        </MDBContainer>
-      </BrowserRouter>
+                <Route
+                  path="/add_answer"
+                  render={(routerProps) => (
+                    <AnswerForm
+                      {...routerProps}
+                      addAnswer={this.addAnswer}
+                      currentQuestion={this.state.question}
+                    />
+                  )}
+                />
+                <Route
+                  path="/answer"
+                  render={(routerProps) => <Answer {...routerProps} />}
+                />
+              </MDBContainer>
+            </Switch>
+            {/* // } */}
+          </Card>
+          <Footer />
+        </div>
+      </MDBContainer>
     );
   }
 }
 
-export default App;
-// export default withRouter (App);
+// export default App;
+export default withRouter(App);
