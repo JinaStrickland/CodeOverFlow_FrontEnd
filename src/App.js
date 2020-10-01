@@ -166,7 +166,6 @@ class App extends Component {
       editedQuestion: { ...this.state.editedQuestion, [name]: value },
     });
     // this.props.history.push("/homepage");
-
   };
 
   patchEditedQuestion = () => {
@@ -191,7 +190,6 @@ class App extends Component {
         this.setState({ questions });
       });
     // this.props.history.push("/homepage");
-
   };
 
   // loggedIn = () => {};
