@@ -12,6 +12,7 @@ import { MDBContainer } from "mdbreact";
 import QuestionForm from "./Components/QuestionForm";
 import EditQuestionForm from "./Components/EditQuestionForm";
 import AnswerForm from "./Components/AnswerForm";
+import EditAnswerForm from "./Components/EditAnswerForm";
 import Answer from "./Components/Answer";
 import "./App.css";
 import { Card } from "react-bootstrap";
@@ -26,12 +27,41 @@ class App extends Component {
   state = {
     questions: [],
     question: {},
+    answers: [],
     savedQuestions: [],
     searchTerm: "",
     editedQuestion: {},
-    answer: {},
+    editedAnswer: {},
     currentUser: {},
   };
+
+  // componentDidMount() {
+  //     Promise.all([fetch(url, {
+  //       method: "GET",
+  //       headers: {
+  //         // Authorization: `Bearer ${localStorage.token}`,
+  //       },
+  //     }), fetch(urlA, {
+  //       method: "GET",
+  //       headers: {
+  //         // Authorization: `Bearer ${localStorage.token}`,
+  //       },
+  //     })])
+
+  //     .then(([res1, res2])  => {
+  //       return Promise.all([res1.json(), res2.json()])
+  //     })
+  //     .then(([res1, res2]) => {
+  //       this.setState({
+  //         questions: res1.map((question) => {
+  //           return { ...question, saved: false };
+  //         }),
+  //         answers: res2.map((answer) => {
+  //           return { ...answer, saved: false };
+  //         }),
+  //       })
+  //     });
+  // }
 
   componentDidMount() {
     fetch(url, {
@@ -195,6 +225,45 @@ class App extends Component {
       });
   };
 
+  clickedAnswer = (editedAnswer) => {
+    this.setState({ editedAnswer });
+  };
+
+  editAnswer = (e) => {
+    e.preventDefault();
+    let name = e.target.name;
+    let value = e.target.value;
+
+    this.setState({
+      editedAnswer: { ...this.state.editedAnswer, [name]: value },
+    });
+  };
+
+  patchEditedAnswer = () => {
+    let answer = this.state.editedAnswer;
+    // const configObj = {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json",
+    //     Authorization: `Bearer ${localStorage.token}`,
+    //   },
+    //   body: JSON.stringify(answer),
+    // };
+
+    //   fetch(url + answer.id, configObj)
+    //   .then((res) => res.json())
+    //   .then((updatedA) => {
+    //     let answers = this.state.answers.map((a) => {
+    //       if (a.id === updatedA.id) 
+    //         return updatedA;
+    //       else return answer;
+    //     });
+    //     this.setState({ answers });
+    //   });
+  }
+ 
+
   redirectToHomepage = () => {
     console.log(this.props.history.push("/homepage"));
   };
@@ -256,6 +325,7 @@ class App extends Component {
                         question={this.state.question}
                         deleteQuestion={this.deleteQuestion}
                         clickedQuestion={this.clickedQuestion}
+                        clickedAnswer={this.clickedAnswer}
                         getAnswer={this.getAnswer}
                       />
                     )}
@@ -293,7 +363,23 @@ class App extends Component {
                   />
                   <Route
                     path="/answer"
-                    render={(routerProps) => <Answer {...routerProps} />}
+                    render={(routerProps) => (
+                      <Answer 
+                        {...routerProps}
+                        answers={this.state.answers}
+                        clickedAnswer={this.clickedAnswer} />
+                      )}
+                  />
+                  <Route
+                    path="/edit_answer"
+                    render={(routerProps) => (
+                      <EditAnswerForm
+                        {...routerProps}
+                        editedAnswer={this.state.editedAnswer}
+                        editAnswer={this.editAnswer}
+                        patchEditedAnswer={this.patchEditedAnswer}
+                      />
+                    )}
                   />
                 </MDBContainer>
               </Switch>

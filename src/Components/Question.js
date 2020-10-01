@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 // let usersUrl = "http://localhost:3000/users/";
 
 class Question extends React.Component {
+  
   render() {
+    // let answerQ = this.props.question.answers.map()
+    // console.log(this.props.question.answers)
+
     let question = this.props.question;
+
     // let answers_count = question.answers.length;
     return (
       <div>

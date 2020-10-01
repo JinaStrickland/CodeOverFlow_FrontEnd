@@ -1,19 +1,25 @@
 import React from "react";
-import { Card } from "react-bootstrap/";
+import { Button, Card } from "react-bootstrap/";
+import { Link } from "react-router-dom";
 
 const Answer = (props) => {
+
   return (
     <div>
       <Card border="secondary" id="answer-page">
-        <Card.Header></Card.Header>
         <br />
+        {props.clickedAnswer}
+          <Button
+            id="add-answer"
+            variant="light"
+            size="sm" 
+            onClick={(e) => props.clickedAnswer(e.target)}
+           >
+            <Link to="/edit_answer"> edit answer</Link>
+          </Button>
         <br />
-        <Card.Body>
-          HELLO
-          <br />
-        </Card.Body>
-      </Card>
-    </div>
+        </Card>
+      </div>
   );
 };
 

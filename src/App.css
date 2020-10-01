@@ -88,12 +88,21 @@
 }
 
 #answer-page {
-  /* margin-top: 40px; */
-  margin-left: 10px;
+  margin-top: 75px;
+  position: relative;
   height: 60rem;
+  margin-left: 0px;
+  margin-bottom: 5px;
 }
+
 #answer-form {
   margin-top: 40px;
   margin-left: 20px;
   height: 60rem;
+}
+
+#edit-answer-form {
+  margin-top: 75px;
+  height: 60rem;
+  /* margin-left: 20px; */
 }

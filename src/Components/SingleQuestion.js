@@ -13,7 +13,9 @@ class SingleQuestion extends React.Component {
 
     let answers = question.answers.map((answer) => (
       <Link to="/answer">
-        <li>{answer.body}</li>
+        <li>{answer.body}
+        onClick={() => this.props.clickedAnswer(answer)}
+        </li>
         <br />
       </Link>
     ));
@@ -40,7 +42,10 @@ class SingleQuestion extends React.Component {
             Answers: <br />
             <br />
             {/* {answers} */}
-            <Link to="/answer">{answers} </Link>
+            <Link to="/answer"
+                  onClick={() => this.props.clickedAnswer(answers)}
+            >{answers} 
+            </Link>
           </p>
         ) : null}
         <Button
