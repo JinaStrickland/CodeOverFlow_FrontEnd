@@ -10,15 +10,7 @@ const Footer = (props) => {
   return (
     <div id="footer">
       <br />
-      <Navbar bg="dark" variant="dark" expand="lg">
-        {/* <img
-            alt=""
-            src={require(`../images/codeOverFlow_logo.jpg`)}
-            width="40"
-            height="40"
-            className="d-inline-block align-top"
-          />{" "} */}
-        {/* CodeOverFlow */}
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="bottom">
         <Link to="/about">
           <h5>ABOUT |</h5>
         </Link>

@@ -85,7 +85,7 @@ class App extends Component {
           })
       );
     e.target.reset();
-    // this.props.history.push("/");
+    this.props.history.push("/homepage");
   };
 
   getQuestion = (foundQuestion) => {
@@ -118,10 +118,10 @@ class App extends Component {
       .then((newAnswer) =>
         this.setState({
           question: { ...this.state.question, newAnswer },
+          // questions: [...this.state.questions, newAnswer],
         })
       );
-    // props.history.push("/");
-    // props.history.push("/login");
+    // props.history.push("/homepage");
     e.target.reset();
   };
 

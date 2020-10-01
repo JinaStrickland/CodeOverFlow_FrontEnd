@@ -6,12 +6,12 @@
   margin-top: 46px;
   position: relative;
   width: "70rem";
-  height: "200rem";
+  /* height: 150rem; */
 }
 
 #nav-bar {
   float: left;
-  height: "150rem";
+  height: 150rem;
   margin-top: 21px;
 }
 
@@ -21,24 +21,24 @@
   margin-top: 46px;
   position: relative;
   width: auto;
-  height: "200rem";
+  height: auto;
 }
 
 #single-question {
   margin-top: 46px;
   position: relative;
-  height: 60rem;
+  /* height: 150rem; */
   margin-left: 15px;
 }
 
 #signup-card {
   margin-top: 46px;
-  height: 60rem;
+  /* height: 60rem; */
 }
 
 #login-card {
   margin-top: 46px;
-  height: 60rem;
+  /* height: 60rem; */
 }
 
 #user-image {
@@ -71,26 +71,26 @@
 
 #question-form {
   margin-top: 50px;
-  height: 60rem;
+  /* height: 60rem; */
 }
 
 #edit-question-form {
   margin-top: 50px;
-  height: 150rem;
+  /* height: 150rem; */
 }
 
 #answer-page {
   margin-left: 10px;
-  height: 150rem;
+  /* height: 150rem; */
 }
 #answer-form {
   margin-top: 40px;
   margin-left: 20px;
-  height: 150rem;
+  /* height: 150rem; */
 }
 
 #footer {
   position: relative;
-  height: 80px;
+  /* height: 80px; */
   clear: both;
 }

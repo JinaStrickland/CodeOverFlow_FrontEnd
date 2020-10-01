@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 class SingleQuestion extends React.Component {
-  redirectToHomepage = () => {
-    this.props.history.push("/homepage");
-  };
+  // redirectToHomepage = () => {
+  //   this.props.history.push("/homepage");
+  // };
 
   render() {
     let question = this.props.question;
